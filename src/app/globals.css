@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: #FBF9F5;
+  color: #1A1A1A;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Warm Luxury Bordered Grid */
+.bordered-grid {
+  display: grid;
+  border-top: 1px solid #EAE5DD;
+  border-left: 1px solid #EAE5DD;
+}
+
+.bordered-grid-item {
+  border-right: 1px solid #EAE5DD;
+  border-bottom: 1px solid #EAE5DD;
+  transition: all 0.3s ease;
+}
+
+.bordered-grid-item:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Luxury Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F3ED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5CEC2;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8C5824;
+}
+
+::selection {
+  background-color: #8C5824;
+  color: #FFFFFF;
+}
