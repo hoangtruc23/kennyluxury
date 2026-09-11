@@ -56,12 +56,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-[#8C5824] transition-colors">
+                <Link href="/dich-vu" className="hover:text-[#8C5824] transition-colors">
                   Dịch vụ
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-[#8C5824] transition-colors">
+                <Link href="/dich-vu#faq" className="hover:text-[#8C5824] transition-colors">
                   Câu hỏi thường gặp
                 </Link>
               </li>
@@ -114,22 +114,22 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-[11px]">
               <li>
-                <Link href="#" className="hover:text-[#8C5824] transition-colors">
+                <Link href="/dich-vu#booking" className="hover:text-[#8C5824] transition-colors">
                   Thu mua
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-[#8C5824] transition-colors">
+                <Link href="/dich-vu#booking" className="hover:text-[#8C5824] transition-colors">
                   Ký gửi
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-[#8C5824] transition-colors">
+                <Link href="/dich-vu#booking" className="hover:text-[#8C5824] transition-colors">
                   Trade-in lên đời
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-[#8C5824] transition-colors">
+                <Link href="/dich-vu#booking" className="hover:text-[#8C5824] transition-colors">
                   Spa &amp; Bảo dưỡng đồng hồ
                 </Link>
               </li>

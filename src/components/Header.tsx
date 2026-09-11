@@ -3,26 +3,34 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Search, User, ShoppingBag, Menu, X, ChevronDown } from "lucide-react";
 import { BRANDS } from "@/lib/data";
 
 export default function Header() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [brandDropdownOpen, setBrandDropdownOpen] = useState(false);
+
+  const isHome = pathname === "/";
+  const isServices = pathname === "/dich-vu";
 
   return (
     <header className="sticky top-0 z-50 bg-[#FBF9F5]/90 backdrop-blur-md border-b border-[#EAE5DD]/80 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Left: Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 flex-shrink-0" style={{ width: 40, height: 40 }}>
+          <div
+            className="relative w-10 h-10 flex-shrink-0"
+            style={{ width: "40px", height: "40px", minWidth: "40px", minHeight: "40px" }}
+          >
             <Image
               src="/images/logo.png"
               alt="Kenny Luxury"
               width={40}
               height={40}
               style={{ width: "40px", height: "40px", objectFit: "contain" }}
-              className="object-contain w-10 h-10 transition-transform group-hover:scale-105"
+              className="object-contain transition-transform group-hover:scale-105"
               priority
             />
           </div>
@@ -38,10 +46,14 @@ export default function Header() {
 
         {/* Center Navigation matching sample */}
         <nav className="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.15em] font-semibold text-[#1A1A1A]">
-          {/* Active pill for TRANG CHỦ */}
+          {/* TRANG CHỦ */}
           <Link
             href="/"
-            className="px-4 py-1.5 rounded-full bg-[#EAE2D5] text-[#1A1A1A] font-bold shadow-xs transition-colors hover:bg-[#E0D5C4]"
+            className={`py-1.5 transition-colors ${
+              isHome
+                ? "px-4 rounded-full bg-[#EAE2D5] text-[#1A1A1A] font-bold shadow-xs"
+                : "hover:text-[#8C5824]"
+            }`}
           >
             Trang Chủ
           </Link>
@@ -75,6 +87,7 @@ export default function Header() {
             )}
           </div>
 
+          {/* SẢN PHẨM */}
           <Link
             href="/danh-muc/rolex/yacht-master"
             className="hover:text-[#8C5824] transition-colors py-2"
@@ -82,22 +95,29 @@ export default function Header() {
             Sản Phẩm
           </Link>
 
+          {/* DỊCH VỤ */}
           <Link
-            href="#services"
-            className="hover:text-[#8C5824] transition-colors py-2"
+            href="/dich-vu"
+            className={`py-2 transition-colors relative ${
+              isServices
+                ? "text-[#8C5824] font-bold border-b-2 border-[#8C5824]"
+                : "hover:text-[#8C5824]"
+            }`}
           >
             Dịch Vụ
           </Link>
 
+          {/* JOURNAL */}
           <Link
-            href="#journal"
+            href="/#journal"
             className="hover:text-[#8C5824] transition-colors py-2"
           >
             Journal
           </Link>
 
+          {/* LIÊN HỆ */}
           <Link
-            href="#contact"
+            href="/dich-vu#booking"
             className="hover:text-[#8C5824] transition-colors py-2"
           >
             Liên Hệ
@@ -149,7 +169,9 @@ export default function Header() {
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-xs uppercase tracking-wider font-bold text-[#8C5824]"
+            className={`block text-xs uppercase tracking-wider font-bold ${
+              isHome ? "text-[#8C5824]" : "text-[#1A1A1A]"
+            }`}
           >
             Trang Chủ
           </Link>
@@ -178,21 +200,23 @@ export default function Header() {
             Sản Phẩm
           </Link>
           <Link
-            href="#services"
+            href="/dich-vu"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-xs uppercase tracking-wider font-semibold text-[#1A1A1A]"
+            className={`block text-xs uppercase tracking-wider font-semibold ${
+              isServices ? "text-[#8C5824]" : "text-[#1A1A1A]"
+            }`}
           >
             Dịch Vụ
           </Link>
           <Link
-            href="#journal"
+            href="/#journal"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-xs uppercase tracking-wider font-semibold text-[#1A1A1A]"
           >
             Journal
           </Link>
           <Link
-            href="#contact"
+            href="/dich-vu#booking"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-xs uppercase tracking-wider font-semibold text-[#1A1A1A]"
           >
