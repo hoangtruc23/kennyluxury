@@ -21,8 +21,24 @@ export default function SubCollectionsRow({
   activeSlug,
   brandSlug = "rolex",
 }: SubCollectionsRowProps) {
+  const handleScrollToCollections = () => {
+    const el = document.getElementById("sub-collections");
+    if (el) {
+      const headerOffset = 80;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      // If the sub-collections section is not already aligned in view, scroll smoothly to it
+      if (Math.abs(elementPosition - headerOffset) > 120) {
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   return (
-    <div className="py-8 border-b border-[#EAE5DD]">
+    <div id="sub-collections" className="py-8 border-b border-[#EAE5DD] scroll-mt-24">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-serif text-base md:text-lg font-bold uppercase tracking-[0.15em] text-[#1A1A1A]">
           BỘ SƯU TẬP
@@ -41,15 +57,24 @@ export default function SubCollectionsRow({
       {/* Grid of Sub-collection Cards */}
       <div
         className={`grid grid-cols-2 sm:grid-cols-3 ${
-          items.length <= 4 ? "md:grid-cols-4" : "md:grid-cols-6"
+          items.length <= 4
+            ? "md:grid-cols-4"
+            : items.length === 5
+            ? "md:grid-cols-5"
+            : "md:grid-cols-6"
         } gap-3 sm:gap-4`}
       >
         {items.map((item) => {
-          const isActive = item.slug === activeSlug;
+          const isActive =
+            item.slug === activeSlug ||
+            ((item.slug === "rm-sport-lifestyle" || item.slug === "rm-sport") &&
+              (activeSlug === "rm-sport-lifestyle" || activeSlug === "rm-sport"));
           return (
             <Link
               key={item.slug}
               href={`/danh-muc/${brandSlug}/${item.slug}`}
+              scroll={false}
+              onClick={handleScrollToCollections}
               className={`group block p-4 bg-white border transition-all duration-300 rounded-sm text-center ${
                 isActive
                   ? "border-[#8C5824] ring-1 ring-[#8C5824]/30 shadow-sm"

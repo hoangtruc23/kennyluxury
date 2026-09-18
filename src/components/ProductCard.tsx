@@ -44,7 +44,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className="pt-2">
           <span className="text-[#8C5824] font-semibold text-sm md:text-base tracking-wide">
-            {formatPrice(product.price)}
+            Giá: Liên hệ
           </span>
         </div>
       </div>

@@ -92,11 +92,11 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
             </div>
 
             {/* Price & Stock */}
-            <div className="py-4 border-y border-[#EAE5DD] flex items-baseline justify-between">
-              <div>
-                <span className="text-xs text-neutral-500 block">Giá bán:</span>
+            <div className="py-4 border-y border-[#EAE5DD] flex items-center justify-between">
+              <div className="flex items-baseline gap-2">
+                <span className="text-xs sm:text-sm font-medium text-neutral-500">Giá:</span>
                 <span className="text-2xl sm:text-3xl font-bold text-[#8C5824]">
-                  {formatPrice(product.price)}
+                  Liên hệ
                 </span>
               </div>
               <div>

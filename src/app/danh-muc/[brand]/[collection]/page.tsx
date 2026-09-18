@@ -11,15 +11,15 @@ import ConsultationBanner from "@/components/ConsultationBanner";
 import { COLLECTIONS, PRODUCTS, BRANDS } from "@/lib/data";
 import { FilterState } from "@/types";
 import { toSlug } from "@/lib/utils";
-import { X, SlidersHorizontal } from "lucide-react";
+import { X, SlidersHorizontal, Video } from "lucide-react";
 
 export default function CollectionPage() {
   const params = useParams();
   const slugArray = Array.isArray(params?.slug)
     ? params.slug
     : typeof params?.slug === "string"
-    ? [params.slug]
-    : [];
+      ? [params.slug]
+      : [];
 
   const rawBrand = (params?.brand as string) || "";
   const rawCollection = (params?.collection as string) || "";
@@ -42,25 +42,33 @@ export default function CollectionPage() {
 
   if (!brandSlug) brandSlug = "rolex";
   const isAP = toSlug(brandSlug) === "audemars-piguet";
+  const isRM = toSlug(brandSlug) === "richard-mille";
 
   const brand = BRANDS.find((b) => toSlug(b.slug) === toSlug(brandSlug)) || (
     isAP
       ? { name: "Audemars Piguet", slug: "audemars-piguet", count: 179 }
-      : { name: "Rolex", slug: "rolex", count: 32 }
+      : isRM
+        ? { name: "Richard Mille", slug: "richard-mille", count: 81 }
+        : { name: "Rolex", slug: "rolex", count: 32 }
   );
 
-  const defaultCollSlug = isAP ? "code-11-59" : "yacht-master";
-  const effectiveCollSlug = toSlug(collectionSlug || defaultCollSlug);
+  const defaultCollSlug = isRM ? "rm-011" : isAP ? "code-11-59" : "yacht-master";
+  let effectiveCollSlug = toSlug(collectionSlug || defaultCollSlug);
+  if (effectiveCollSlug === "rm-sport") {
+    effectiveCollSlug = "rm-sport-lifestyle";
+  }
 
   const collectionInfo = COLLECTIONS[effectiveCollSlug] || {
-    name: isAP ? "Code 11.59" : "Yacht-Master",
+    name: isRM ? "RM 011" : isAP ? "Code 11.59" : "Yacht-Master",
     slug: effectiveCollSlug,
     brandName: brand.name,
     brandSlug: brand.slug,
-    description: isAP
-      ? "Code 11.59 by Audemars Piguet là sự giao thoa hoàn mỹ giữa nghệ thuật chế tác Haute Horlogerie truyền thống và cấu trúc hình học đa tầng tương lai với vành bát giác ẩn mình dưới nắp sapphire vòm kép độc bản."
-      : "Yacht-Master là hiện thân của phong cách sống thượng lưu trên những du thuyền sang trọng. Tuyệt tác này nổi bật với vành bezel xoay hai chiều sở hữu các chữ số đúc nổi 3D tinh xảo – dấu ấn nhận diện độc tôn của bộ sưu tập của Rolex.",
-    totalProducts: isAP ? 77 : 20,
+    description: isRM
+      ? "Biểu tượng Chronograph thể thao lừng danh gắn liền với đường đua F1. Vỏ Tonneau mạnh mẽ, bộ máy Flyback Chronograph Calibre RMAC1 và các vật liệu công nghệ cao NTPT Carbon, Ceramic & Red TPT."
+      : isAP
+        ? "Code 11.59 by Audemars Piguet là sự giao thoa hoàn mỹ giữa nghệ thuật chế tác Haute Horlogerie truyền thống và cấu trúc hình học đa tầng tương lai với vành bát giác ẩn mình dưới nắp sapphire vòm kép độc bản."
+        : "Yacht-Master là hiện thân của phong cách sống thượng lưu trên những du thuyền sang trọng. Tuyệt tác này nổi bật với vành bezel xoay hai chiều sở hữu các chữ số đúc nổi 3D tinh xảo – dấu ấn nhận diện độc tôn của bộ sưu tập của Rolex.",
+    totalProducts: isRM ? 7 : isAP ? 77 : 20,
   };
 
   // State for layout & filters
@@ -86,6 +94,40 @@ export default function CollectionPage() {
 
   // Sub-collections data matching the brand
   const subCollections = useMemo(() => {
+    if (isRM) {
+      return [
+        {
+          name: "RM 011",
+          slug: "rm-011",
+          image:
+            "https://theempire.vn/wp-content/uploads/2024/12/Dong-Ho-Richard-Mille-RM-011-Felipe-Massa-Red-TPT-RM011.png",
+        },
+        {
+          name: "RM 07-01",
+          slug: "rm-07-01",
+          image:
+            "https://theempire.vn/wp-content/uploads/2026/07/Richard-Mille-RM-07-01-Automatic-Winding-Coloured-Ceramics-Blush-Pink-scaled.png",
+        },
+        {
+          name: "RM 030",
+          slug: "rm-030",
+          image:
+            "https://theempire.vn/wp-content/uploads/2024/12/Dong-Ho-Richard-Mille-RM-030-Rose-Gold-RM030.png",
+        },
+        {
+          name: "RM TOURBILLON",
+          slug: "rm-tourbillon",
+          image:
+            "https://theempire.vn/wp-content/uploads/2024/12/Dong-Ho-Richard-Mille-RM-027-Rafael-Nadal-Tourbillon.png",
+        },
+        {
+          name: "RM SPORT & LIFESTYLE",
+          slug: "rm-sport-lifestyle",
+          image:
+            "https://theempire.vn/wp-content/uploads/2024/11/RM65-01.png",
+        },
+      ];
+    }
     if (isAP) {
       return [
         {
@@ -152,9 +194,18 @@ export default function CollectionPage() {
           "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226658-0001-Mat-So-Den-800x800.png",
       },
     ];
-  }, [isAP]);
+  }, [isAP, isRM]);
 
   const availableCollections = useMemo(() => {
+    if (isRM) {
+      return [
+        { name: "RM 011", slug: "rm-011", count: 7 },
+        { name: "RM 07-01", slug: "rm-07-01", count: 26 },
+        { name: "RM 030", slug: "rm-030", count: 7 },
+        { name: "RM Tourbillon", slug: "rm-tourbillon", count: 26 },
+        { name: "RM Sport & Lifestyle", slug: "rm-sport-lifestyle", count: 15 },
+      ];
+    }
     if (isAP) {
       return [
         { name: "Code 11.59", slug: "code-11-59", count: 77 },
@@ -168,7 +219,7 @@ export default function CollectionPage() {
       { name: "Submariner", slug: "submariner", count: 16 },
       { name: "Cosmograph Daytona", slug: "daytona", count: 14 },
     ];
-  }, [isAP]);
+  }, [isAP, isRM]);
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
@@ -184,9 +235,17 @@ export default function CollectionPage() {
       // Filter by collection if selected
       if (filters.collections.length > 0) {
         const prodCollSlug = toSlug(product.collection);
-        const match = filters.collections.some(
-          (c) => toSlug(c) === prodCollSlug
-        );
+        const match = filters.collections.some((c) => {
+          const s = toSlug(c);
+          if (s === prodCollSlug) return true;
+          if (
+            (s === "rm-sport" || s === "rm-sport-lifestyle") &&
+            (prodCollSlug === "rm-sport" || prodCollSlug === "rm-sport-lifestyle")
+          ) {
+            return true;
+          }
+          return false;
+        });
         if (!match) return false;
       }
 
@@ -210,7 +269,11 @@ export default function CollectionPage() {
       return true;
     });
 
-    if (sortBy === "price-asc") {
+    if (sortBy === "name-asc") {
+      result = [...result].sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === "name-desc") {
+      result = [...result].sort((a, b) => b.name.localeCompare(a.name));
+    } else if (sortBy === "price-asc") {
       result = [...result].sort((a, b) => a.price - b.price);
     } else if (sortBy === "price-desc") {
       result = [...result].sort((a, b) => b.price - a.price);
@@ -224,17 +287,29 @@ export default function CollectionPage() {
       {/* 1. Large Brand Hero Banner */}
       <BrandHero
         brandName={brand.name}
-        subtitle={isAP ? "Haute Horlogerie Since 1875" : "Timeless Elegance."}
+        title={isAP ? "AUDEMARS PIGUET" : `${brand.name.toUpperCase()}`}
+        subtitle={
+          isRM
+            ? "A Racing Machine On The Wrist"
+            : isAP
+              ? "Haute Horlogerie Since 1875"
+              : "Timeless Elegance."
+        }
         description={
           isAP
-            ? "Đỉnh cao chế tác đồng hồ từ Vallée de Joux, Thụy Sĩ. Nơi kết tinh giữa kỹ nghệ chế tác thủ công truyền thống và thiết kế đa tầng tiên phong."
-            : "Biểu tượng của sự thanh lịch vượt thời gian và tinh thần sáng tạo đỉnh cao."
+            ? "Đồng hồ Audemars Piguet gây ấn tượng không chỉ bởi thiết kế táo bạo và đột phá, mà còn bởi chất liệu và kỹ thuật vượt trội trong từng chi tiết. Từ mô-đun đến chuyển động cơ học, mọi yếu tố đều được các kỹ sư cơ khí vi mô hàng đầu chế tác tỉ mỉ qua hàng nghìn giờ lao động thủ công."
+            : isRM
+              ? "Đỉnh cao đột phá vi cơ khí từ Les Breuleux, Thụy Sĩ. Tiên phong ứng dụng vật liệu hàng không vũ trụ và xe đua F1 vào những cỗ máy thời gian triệu đô."
+              : "Biểu tượng của sự thanh lịch vượt thời gian và tinh thần sáng tạo đỉnh cao."
         }
         heroImage={
-          isAP
-            ? "https://theempire.vn/wp-content/uploads/2024/11/Audemars-Piquet-Royal-Oak-Flying-Tourbillon-41mm-1.png"
-            : "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226659-0002-Mat-So-Den-800x800.png"
+          isRM
+            ? "https://theempire.vn/wp-content/uploads/2024/12/Dong-Ho-Richard-Mille-RM-011-Felipe-Massa-Red-TPT-RM011.png"
+            : isAP
+              ? "https://theempire.vn/wp-content/uploads/2024/11/Audemars-Piquet-Royal-Oak-Flying-Tourbillon-41mm-1.png"
+              : "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226659-0002-Mat-So-Den-800x800.png"
         }
+        videoUrl={isAP ? "/videos/Piguet.mp4" : undefined}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -242,14 +317,22 @@ export default function CollectionPage() {
         <BrandStory
           brandName={brand.name}
           brandSlug={brand.slug}
-          tagline="Biểu tượng của sự sáng tạo và tinh tế vượt thời gian."
-          description="Thành lập với sứ mệnh định hình chuẩn mực đỉnh cao của ngành chế tác vi cơ khí, mỗi cỗ máy thời gian là sự kết tinh hoàn mỹ giữa nghệ thuật kim hoàn, di sản truyền đời và độ chính xác tuyệt đối."
+          tagline={
+            isRM
+              ? "Kỷ nguyên của những cỗ máy thời gian siêu nhẹ và siêu bền bỉ."
+              : "Biểu tượng của sự sáng tạo và tinh tế vượt thời gian."
+          }
+          description={
+            isRM
+              ? "Richard Mille định hình lại hoàn toàn khái niệm về đồng hồ xa xỉ với triết lý kết hợp giữa công nghệ đua xe Công thức 1 và kỹ nghệ đồng hồ Haute Horlogerie đỉnh cao. Mỗi siêu phẩm chế tác từ Carbon TPT, Titanium cấp độ 5 và Sapphire nguyên khối."
+              : "Thành lập với sứ mệnh định hình chuẩn mực đỉnh cao của ngành chế tác vi cơ khí, mỗi cỗ máy thời gian là sự kết tinh hoàn mỹ giữa nghệ thuật kim hoàn, di sản truyền đời và độ chính xác tuyệt đối."
+          }
         />
 
         {/* 3. Sub-Collections Row */}
         <SubCollectionsRow
           items={subCollections}
-          activeSlug={collectionSlug}
+          activeSlug={effectiveCollSlug}
           brandSlug={brand.slug}
         />
 
@@ -268,11 +351,12 @@ export default function CollectionPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
+              aria-label="Sắp xếp sản phẩm"
               className="border border-[#EAE5DD] rounded-sm text-xs py-2 px-3 bg-white text-[#1A1A1A] focus:outline-none"
             >
               <option value="newest">Mới nhất</option>
-              <option value="price-asc">Giá: Thấp đến Cao</option>
-              <option value="price-desc">Giá: Cao đến Thấp</option>
+              <option value="name-asc">Tên: A - Z</option>
+              <option value="name-desc">Tên: Z - A</option>
             </select>
           </div>
 
@@ -305,12 +389,12 @@ export default function CollectionPage() {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    aria-label="Sắp xếp theo giá"
+                    aria-label="Sắp xếp sản phẩm"
                     className="border border-[#EAE5DD] rounded-sm text-xs py-1.5 px-2.5 bg-white text-[#1A1A1A] focus:outline-none focus:border-[#8C5824]"
                   >
                     <option value="newest">Mới nhất</option>
-                    <option value="price-asc">Giá: Thấp đến Cao</option>
-                    <option value="price-desc">Giá: Cao đến Thấp</option>
+                    <option value="name-asc">Tên: A - Z</option>
+                    <option value="name-desc">Tên: Z - A</option>
                   </select>
                 </div>
               </div>

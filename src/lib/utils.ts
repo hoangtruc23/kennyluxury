@@ -5,9 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatPrice(price: number): string {
-  if (!price || price <= 0) return "Liên hệ";
-  return new Intl.NumberFormat("vi-VN").format(price) + " ₫";
+export function formatPrice(price?: number): string {
+  return "Liên hệ";
 }
 
 export function toSlug(str: string): string {

@@ -13,6 +13,10 @@ export default function BrandPage({ params }: BrandPageProps) {
     redirect("/danh-muc/audemars-piguet/code-11-59");
   }
 
+  if (brandSlug === "richard-mille") {
+    redirect("/danh-muc/richard-mille/rm-011");
+  }
+
   // Default to yacht-master for Rolex and other brands
   redirect(`/danh-muc/${brandSlug}/yacht-master`);
 }

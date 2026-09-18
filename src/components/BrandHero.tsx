@@ -4,17 +4,70 @@ import Image from "next/image";
 
 interface BrandHeroProps {
   brandName?: string;
+  title?: string;
   subtitle?: string;
   description?: string;
   heroImage?: string;
+  videoUrl?: string;
 }
 
 export default function BrandHero({
   brandName = "ROLEX",
+  title,
   subtitle = "Timeless Elegance.",
   description = "Biểu tượng của sự thanh lịch vượt thời gian và tinh thần sáng tạo đỉnh cao.",
   heroImage = "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226659-0002-Mat-So-Den-800x800.png",
+  videoUrl,
 }: BrandHeroProps) {
+  // If videoUrl is provided, render cinematic 80vh video hero
+  if (videoUrl) {
+    const displayTitle = title || (brandName ? `ĐỒNG HỒ ${brandName.toUpperCase()}` : "ĐỒNG HỒ CAO CẤP");
+
+    return (
+      <section className="-mt-20 relative w-full h-[80vh] min-h-[560px] max-h-[880px] overflow-hidden flex items-end bg-black border-b border-neutral-900">
+        {/* Background Video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source src={videoUrl} type="video/mp4" />
+          Trình duyệt của bạn không hỗ trợ video.
+        </video>
+
+        {/* Top Gradient for Header contrast */}
+        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black/85 via-black/45 to-transparent pointer-events-none z-10" />
+
+        {/* Subtle overall dark tint */}
+        <div className="absolute inset-0 bg-black/25 pointer-events-none z-10" />
+
+        {/* Bottom Gradient for Text contrast */}
+        <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none z-10" />
+
+        {/* Bottom-left Typography matching reference design */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-10 sm:pb-14 lg:pb-16">
+          <div className="max-w-2xl space-y-4 sm:space-y-5">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-normal tracking-wide text-white uppercase leading-[1.15] drop-shadow-sm">
+              {displayTitle}
+            </h1>
+
+            {description && (
+              <div className="border-l-2 border-white/70 pl-4 sm:pl-6">
+                <p className="text-xs sm:text-sm md:text-base text-white/90 font-light leading-relaxed tracking-wide drop-shadow-sm">
+                  {description}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Fallback to static image hero
   return (
     <section className="relative w-full bg-gradient-to-r from-[#FBF9F5] via-[#F6F2EA] to-[#EDE7DC] border-b border-[#EAE5DD] overflow-hidden py-14 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +88,7 @@ export default function BrandHero({
 
             <div className="pt-4 flex flex-wrap gap-4">
               <Link
-                href="#catalog"
+                href="#sub-collections"
                 className="bg-[#8C5824] hover:bg-[#724419] text-white text-xs font-semibold uppercase tracking-[0.15em] px-8 py-3.5 rounded-sm shadow-sm transition-all hover:scale-105"
               >
                 KHÁM PHÁ BỘ SƯU TẬP

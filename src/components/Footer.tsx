@@ -90,12 +90,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/danh-muc/audemars-piguet/yacht-master" className="hover:text-[#8C5824] transition-colors">
+                <Link href="/danh-muc/audemars-piguet/code-11-59" className="hover:text-[#8C5824] transition-colors">
                   Audemars Piguet
                 </Link>
               </li>
               <li>
-                <Link href="/danh-muc/richard-mille/yacht-master" className="hover:text-[#8C5824] transition-colors">
+                <Link href="/danh-muc/richard-mille/rm-011" className="hover:text-[#8C5824] transition-colors">
                   Richard Mille
                 </Link>
               </li>

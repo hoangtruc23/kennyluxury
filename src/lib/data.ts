@@ -1,11 +1,12 @@
 import { Product, CollectionInfo } from "@/types";
 import apProductsJson from "./ap_products.json";
+import rmProductsJson from "./rm_products.json";
 
 export const BRANDS = [
   { name: "Rolex", slug: "rolex", count: 32 },
   { name: "Audemars Piguet", slug: "audemars-piguet", count: 179 },
   { name: "Patek Philippe", slug: "patek-philippe", count: 18 },
-  { name: "Richard Mille", slug: "richard-mille", count: 12 },
+  { name: "Richard Mille", slug: "richard-mille", count: 81 },
   { name: "Hublot", slug: "hublot", count: 24 },
   { name: "Franck Muller", slug: "franck-muller", count: 10 },
 ];
@@ -82,6 +83,60 @@ export const COLLECTIONS: Record<string, CollectionInfo> = {
     description:
       "Phiên bản thể thao mạnh mẽ, cơ bắp và bứt phá mọi giới hạn của biểu tượng Royal Oak. Vỏ lớn 42mm - 44mm, họa tiết Méga Tapisserie, nút bấm gốm ceramic và khả năng kháng nước bền bỉ.",
     totalProducts: 19,
+  },
+  "rm-011": {
+    name: "RM 011",
+    slug: "rm-011",
+    brandName: "Richard Mille",
+    brandSlug: "richard-mille",
+    description:
+      "Biểu tượng Chronograph thể thao lừng danh gắn liền với đường đua F1. Vỏ Tonneau mạnh mẽ, bộ máy Flyback Chronograph Calibre RMAC1 và các vật liệu công nghệ cao NTPT Carbon, Ceramic & Red TPT.",
+    totalProducts: 7,
+  },
+  "rm-07-01": {
+    name: "RM 07-01",
+    slug: "rm-07-01",
+    brandName: "Richard Mille",
+    brandSlug: "richard-mille",
+    description:
+      "Tuyệt tác đồng hồ nữ xa hoa bậc nhất của Richard Mille. Đỉnh cao kỹ thuật nạm kim cương Snow-setting, gốm màu Pastel TZP ngọt ngào và Sapphire nguyên khối trong suốt.",
+    totalProducts: 26,
+  },
+  "rm-030": {
+    name: "RM 030",
+    slug: "rm-030",
+    brandName: "Richard Mille",
+    brandSlug: "richard-mille",
+    description:
+      "Đỉnh cao cơ cấu ly hợp ngắt rotor tự động (Declutchable Rotor) độc quyền, ngăn chặn sự lên dây cót quá mức và bảo vệ cỗ máy vận hành với độ chính xác tuyệt đối.",
+    totalProducts: 7,
+  },
+  "rm-tourbillon": {
+    name: "RM Tourbillon",
+    slug: "rm-tourbillon",
+    brandName: "Richard Mille",
+    brandSlug: "richard-mille",
+    description:
+      "Những tuyệt tác vi cơ khí phức tạp nhất thế giới: RM 027 Rafael Nadal, RM 43-01 Ferrari, RM 75-01 Sapphire... Triệt tiêu hoàn toàn tác động của trọng lực với khả năng chịu xung chấn phi thường.",
+    totalProducts: 26,
+  },
+  "rm-sport": {
+    name: "RM Sport & Lifestyle",
+    slug: "rm-sport-lifestyle",
+    brandName: "Richard Mille",
+    brandSlug: "richard-mille",
+    description:
+      "Các cỗ máy thể thao đỉnh cao: RM 65-01 Split-Seconds 36.000 vph, RM 67-02 siêu nhẹ 32g, RM 55-01 Bubba Watson, RM 72-01 In-house Chronograph và RM 63-02 Worldtimer.",
+    totalProducts: 15,
+  },
+  "rm-sport-lifestyle": {
+    name: "RM Sport & Lifestyle",
+    slug: "rm-sport-lifestyle",
+    brandName: "Richard Mille",
+    brandSlug: "richard-mille",
+    description:
+      "Các cỗ máy thể thao đỉnh cao: RM 65-01 Split-Seconds 36.000 vph, RM 67-02 siêu nhẹ 32g, RM 55-01 Bubba Watson, RM 72-01 In-house Chronograph và RM 63-02 Worldtimer.",
+    totalProducts: 15,
   },
 };
 
@@ -295,4 +350,5 @@ export const PRODUCTS: Product[] = [
       "Chiếc đồng hồ bấm giờ đếm ngược Regatta phức tạp bậc nhất của Rolex, biểu tượng kiêu hãnh của các thuyền trưởng đại dương.",
   },
   ...(apProductsJson as unknown as Product[]),
+  ...(rmProductsJson as unknown as Product[]),
 ];
