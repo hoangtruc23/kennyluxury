@@ -54,13 +54,13 @@ export default function FilterSidebar({
     filters.stockStatuses.length > 0 ||
     filters.caseSizes.length > 0 ||
     filters.priceRange[0] > 0 ||
-    filters.priceRange[1] < 20000000000;
+    filters.priceRange[1] < 500000000000;
 
   const handleResetFilters = () => {
     onFilterChange({
       collections: [],
       stockStatuses: [],
-      priceRange: [0, 20000000000],
+      priceRange: [0, 500000000000],
       caseSizes: [],
     });
   };
@@ -137,7 +137,7 @@ export default function FilterSidebar({
         </h3>
         <div className="space-y-2 text-xs">
           {[
-            { label: "Tất cả mức giá", range: [0, 20000000000] as [number, number] },
+            { label: "Tất cả mức giá", range: [0, 500000000000] as [number, number] },
             { label: "Dưới 500 triệu", range: [0, 500000000] as [number, number] },
             {
               label: "500 triệu - 1 tỷ",
@@ -145,7 +145,7 @@ export default function FilterSidebar({
             },
             {
               label: "Trên 1 tỷ",
-              range: [1000000000, 20000000000] as [number, number],
+              range: [1000000000, 500000000000] as [number, number],
             },
           ].map((tier, idx) => {
             const isChecked =

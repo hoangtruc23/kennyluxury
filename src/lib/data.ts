@@ -1,11 +1,12 @@
 import { Product, CollectionInfo } from "@/types";
+import apProductsJson from "./ap_products.json";
 
 export const BRANDS = [
   { name: "Rolex", slug: "rolex", count: 32 },
+  { name: "Audemars Piguet", slug: "audemars-piguet", count: 179 },
   { name: "Patek Philippe", slug: "patek-philippe", count: 18 },
   { name: "Richard Mille", slug: "richard-mille", count: 12 },
   { name: "Hublot", slug: "hublot", count: 24 },
-  { name: "Audemars Piguet", slug: "audemars-piguet", count: 15 },
   { name: "Franck Muller", slug: "franck-muller", count: 10 },
 ];
 
@@ -36,6 +37,51 @@ export const COLLECTIONS: Record<string, CollectionInfo> = {
     description:
       "Biểu tượng tốc độ gắn liền với giải đua huyền thoại. Kiệt tác bấm giờ cơ khí đỉnh cao dành cho giới sưu tầm xa xỉ.",
     totalProducts: 14,
+  },
+  "code-11-59": {
+    name: "Code 11.59",
+    slug: "code-11-59",
+    brandName: "Audemars Piguet",
+    brandSlug: "audemars-piguet",
+    description:
+      "Code 11.59 by Audemars Piguet là sự giao thoa hoàn mỹ giữa nghệ thuật chế tác Haute Horlogerie truyền thống và cấu trúc hình học đa tầng tương lai với vành bát giác ẩn mình dưới nắp sapphire vòm kép độc bản.",
+    totalProducts: 77,
+  },
+  "code-11:59": {
+    name: "Code 11.59",
+    slug: "code-11-59",
+    brandName: "Audemars Piguet",
+    brandSlug: "audemars-piguet",
+    description:
+      "Code 11.59 by Audemars Piguet là sự giao thoa hoàn mỹ giữa nghệ thuật chế tác Haute Horlogerie truyền thống và cấu trúc hình học đa tầng tương lai.",
+    totalProducts: 77,
+  },
+  "royal-oak": {
+    name: "Royal Oak",
+    slug: "royal-oak",
+    brandName: "Audemars Piguet",
+    brandSlug: "audemars-piguet",
+    description:
+      "Huyền thoại bất hủ định hình ngành đồng hồ thể thao xa xỉ thế giới từ năm 1972 của bậc thầy Gérald Genta. Nổi bật với vành bezel bát giác, 8 ốc vít lục giác và mặt số vân 'Grande Tapisserie' kinh điển.",
+    totalProducts: 61,
+  },
+  "royal-oak-concept": {
+    name: "Royal Oak Concept",
+    slug: "royal-oak-concept",
+    brandName: "Audemars Piguet",
+    brandSlug: "audemars-piguet",
+    description:
+      "Đỉnh cao của kiến trúc vi cơ học tương lai và vật liệu công nghệ cao. Royal Oak Concept là sàn diễn của những cỗ máy Flying Tourbillon siêu phức tạp, Titanium, Forged Carbon và các dự án siêu phẩm toàn cầu.",
+    totalProducts: 22,
+  },
+  "royal-oak-offshore": {
+    name: "Royal Oak Offshore",
+    slug: "royal-oak-offshore",
+    brandName: "Audemars Piguet",
+    brandSlug: "audemars-piguet",
+    description:
+      "Phiên bản thể thao mạnh mẽ, cơ bắp và bứt phá mọi giới hạn của biểu tượng Royal Oak. Vỏ lớn 42mm - 44mm, họa tiết Méga Tapisserie, nút bấm gốm ceramic và khả năng kháng nước bền bỉ.",
+    totalProducts: 19,
   },
 };
 
@@ -248,4 +294,5 @@ export const PRODUCTS: Product[] = [
     description:
       "Chiếc đồng hồ bấm giờ đếm ngược Regatta phức tạp bậc nhất của Rolex, biểu tượng kiêu hãnh của các thuyền trưởng đại dương.",
   },
+  ...(apProductsJson as unknown as Product[]),
 ];

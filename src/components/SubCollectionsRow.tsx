@@ -39,7 +39,11 @@ export default function SubCollectionsRow({
       </div>
 
       {/* Grid of Sub-collection Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
+      <div
+        className={`grid grid-cols-2 sm:grid-cols-3 ${
+          items.length <= 4 ? "md:grid-cols-4" : "md:grid-cols-6"
+        } gap-3 sm:gap-4`}
+      >
         {items.map((item) => {
           const isActive = item.slug === activeSlug;
           return (

@@ -10,6 +10,7 @@ import ProductGrid from "@/components/ProductGrid";
 import ConsultationBanner from "@/components/ConsultationBanner";
 import { COLLECTIONS, PRODUCTS, BRANDS } from "@/lib/data";
 import { FilterState } from "@/types";
+import { toSlug } from "@/lib/utils";
 import { X, SlidersHorizontal } from "lucide-react";
 
 export default function CollectionPage() {
@@ -19,24 +20,47 @@ export default function CollectionPage() {
     : typeof params?.slug === "string"
     ? [params.slug]
     : [];
-  const brandSlug = (params?.brand as string) || slugArray[0] || "rolex";
-  const collectionSlug =
-    (params?.collection as string) || slugArray[1] || "yacht-master";
 
-  const brand = BRANDS.find((b) => b.slug === brandSlug) || {
-    name: "Rolex",
-    slug: "rolex",
-    count: 32,
-  };
+  const rawBrand = (params?.brand as string) || "";
+  const rawCollection = (params?.collection as string) || "";
 
-  const collectionInfo = COLLECTIONS[collectionSlug] || {
-    name: "Yacht-Master",
-    slug: "yacht-master",
+  let brandSlug = rawBrand;
+  let collectionSlug = rawCollection;
+
+  if (!brandSlug && slugArray.length > 0) {
+    const first = toSlug(slugArray[0]);
+    if (COLLECTIONS[first]) {
+      brandSlug = COLLECTIONS[first].brandSlug;
+      collectionSlug = COLLECTIONS[first].slug;
+    } else {
+      brandSlug = first;
+      collectionSlug = slugArray[1] ? toSlug(slugArray[1]) : "";
+    }
+  } else if (brandSlug && !collectionSlug && slugArray.length > 0) {
+    collectionSlug = toSlug(slugArray[0]);
+  }
+
+  if (!brandSlug) brandSlug = "rolex";
+  const isAP = toSlug(brandSlug) === "audemars-piguet";
+
+  const brand = BRANDS.find((b) => toSlug(b.slug) === toSlug(brandSlug)) || (
+    isAP
+      ? { name: "Audemars Piguet", slug: "audemars-piguet", count: 179 }
+      : { name: "Rolex", slug: "rolex", count: 32 }
+  );
+
+  const defaultCollSlug = isAP ? "code-11-59" : "yacht-master";
+  const effectiveCollSlug = toSlug(collectionSlug || defaultCollSlug);
+
+  const collectionInfo = COLLECTIONS[effectiveCollSlug] || {
+    name: isAP ? "Code 11.59" : "Yacht-Master",
+    slug: effectiveCollSlug,
     brandName: brand.name,
     brandSlug: brand.slug,
-    description:
-      "Yacht-Master là hiện thân của phong cách sống thượng lưu trên những du thuyền sang trọng. Tuyệt tác này nổi bật với vành bezel xoay hai chiều sở hữu các chữ số đúc nổi 3D tinh xảo – dấu ấn nhận diện độc tôn của bộ sưu tập của Rolex.",
-    totalProducts: 20,
+    description: isAP
+      ? "Code 11.59 by Audemars Piguet là sự giao thoa hoàn mỹ giữa nghệ thuật chế tác Haute Horlogerie truyền thống và cấu trúc hình học đa tầng tương lai với vành bát giác ẩn mình dưới nắp sapphire vòm kép độc bản."
+      : "Yacht-Master là hiện thân của phong cách sống thượng lưu trên những du thuyền sang trọng. Tuyệt tác này nổi bật với vành bezel xoay hai chiều sở hữu các chữ số đúc nổi 3D tinh xảo – dấu ấn nhận diện độc tôn của bộ sưu tập của Rolex.",
+    totalProducts: isAP ? 77 : 20,
   };
 
   // State for layout & filters
@@ -44,14 +68,52 @@ export default function CollectionPage() {
   const [sortBy, setSortBy] = useState("newest");
 
   const [filters, setFilters] = useState<FilterState>({
-    collections: [collectionSlug],
+    collections: [effectiveCollSlug],
     stockStatuses: [],
-    priceRange: [0, 20000000000],
+    priceRange: [0, 500000000000],
     caseSizes: [],
   });
 
-  // Sub-collections data matching the row in sample image
+  // Keep collection filter in sync when navigating between sub-collections
+  React.useEffect(() => {
+    if (effectiveCollSlug) {
+      setFilters((prev) => ({
+        ...prev,
+        collections: [effectiveCollSlug],
+      }));
+    }
+  }, [effectiveCollSlug]);
+
+  // Sub-collections data matching the brand
   const subCollections = useMemo(() => {
+    if (isAP) {
+      return [
+        {
+          name: "CODE 11.59",
+          slug: "code-11-59",
+          image:
+            "https://theempire.vn/wp-content/uploads/2026/01/Audemars-Piguet-Code-11.59-By-Audermars-Piguet-Selfwinding-15210OR.OO_.A099CR.01.png",
+        },
+        {
+          name: "ROYAL OAK",
+          slug: "royal-oak",
+          image:
+            "https://theempire.vn/wp-content/uploads/2024/11/Audemars-Piquet-Royal-Oak-Flying-Tourbillon-41mm-1.png",
+        },
+        {
+          name: "ROYAL OAK CONCEPT",
+          slug: "royal-oak-concept",
+          image:
+            "https://theempire.vn/wp-content/uploads/2026/01/Audemars-Piguet-Royal-Oak-Concept-26227BC.SS_.D326CR.01-Flying-Tourbillon-.png",
+        },
+        {
+          name: "ROYAL OAK OFFSHORE",
+          slug: "royal-oak-offshore",
+          image:
+            "https://theempire.vn/wp-content/uploads/2024/12/100.png",
+        },
+      ];
+    }
     return [
       {
         name: "YACHT-MASTER",
@@ -90,27 +152,42 @@ export default function CollectionPage() {
           "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226658-0001-Mat-So-Den-800x800.png",
       },
     ];
-  }, []);
+  }, [isAP]);
 
   const availableCollections = useMemo(() => {
+    if (isAP) {
+      return [
+        { name: "Code 11.59", slug: "code-11-59", count: 77 },
+        { name: "Royal Oak", slug: "royal-oak", count: 61 },
+        { name: "Royal Oak Concept", slug: "royal-oak-concept", count: 22 },
+        { name: "Royal Oak Offshore", slug: "royal-oak-offshore", count: 19 },
+      ];
+    }
     return [
       { name: "Yacht Master", slug: "yacht-master", count: 20 },
       { name: "Submariner", slug: "submariner", count: 16 },
       { name: "Cosmograph Daytona", slug: "daytona", count: 14 },
     ];
-  }, []);
+  }, [isAP]);
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
     let result = PRODUCTS.filter((product) => {
-      // Filter by collection if selected
+      // Filter by brand
       if (
-        filters.collections.length > 0 &&
-        !filters.collections.includes(
-          product.collection.toLowerCase().replace(/ /g, "-")
-        )
+        brandSlug &&
+        toSlug(product.brand) !== toSlug(brandSlug)
       ) {
         return false;
+      }
+
+      // Filter by collection if selected
+      if (filters.collections.length > 0) {
+        const prodCollSlug = toSlug(product.collection);
+        const match = filters.collections.some(
+          (c) => toSlug(c) === prodCollSlug
+        );
+        if (!match) return false;
       }
 
       // Filter by stock status
@@ -123,8 +200,9 @@ export default function CollectionPage() {
 
       // Filter by price range
       if (
-        product.price < filters.priceRange[0] ||
-        product.price > filters.priceRange[1]
+        product.price > 0 &&
+        (product.price < filters.priceRange[0] ||
+          product.price > filters.priceRange[1])
       ) {
         return false;
       }
@@ -139,16 +217,24 @@ export default function CollectionPage() {
     }
 
     return result;
-  }, [filters, sortBy]);
+  }, [brandSlug, filters, sortBy]);
 
   return (
     <div className="min-h-screen bg-[#FBF9F5] text-[#1A1A1A]">
       {/* 1. Large Brand Hero Banner */}
       <BrandHero
         brandName={brand.name}
-        subtitle="Timeless Elegance."
-        description="Biểu tượng của sự thanh lịch vượt thời gian và tinh thần sáng tạo đỉnh cao."
-        heroImage="/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226659-0002-Mat-So-Den-800x800.png"
+        subtitle={isAP ? "Haute Horlogerie Since 1875" : "Timeless Elegance."}
+        description={
+          isAP
+            ? "Đỉnh cao chế tác đồng hồ từ Vallée de Joux, Thụy Sĩ. Nơi kết tinh giữa kỹ nghệ chế tác thủ công truyền thống và thiết kế đa tầng tiên phong."
+            : "Biểu tượng của sự thanh lịch vượt thời gian và tinh thần sáng tạo đỉnh cao."
+        }
+        heroImage={
+          isAP
+            ? "https://theempire.vn/wp-content/uploads/2024/11/Audemars-Piquet-Royal-Oak-Flying-Tourbillon-41mm-1.png"
+            : "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226659-0002-Mat-So-Den-800x800.png"
+        }
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -43,7 +43,7 @@ export default function BrandStory({
           </p>
 
           <Link
-            href={`/danh-muc/${brandSlug}/yacht-master`}
+            href={brandSlug === "audemars-piguet" ? "/danh-muc/audemars-piguet/code-11-59" : `/danh-muc/${brandSlug}/yacht-master`}
             className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#8C5824] hover:text-[#724419] transition-colors group"
           >
             <span>KHÁM PHÁ THƯƠNG HIỆU</span>

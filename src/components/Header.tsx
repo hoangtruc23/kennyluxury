@@ -77,7 +77,7 @@ export default function Header() {
                 {BRANDS.map((b) => (
                   <Link
                     key={b.slug}
-                    href={`/danh-muc/${b.slug}/yacht-master`}
+                    href={b.slug === "audemars-piguet" ? "/danh-muc/audemars-piguet/code-11-59" : `/danh-muc/${b.slug}/yacht-master`}
                     className="block px-3 py-2 text-xs text-[#1A1A1A] hover:text-[#8C5824] hover:bg-[#FBF9F5] rounded-sm transition-colors"
                   >
                     {b.name}
@@ -183,7 +183,7 @@ export default function Header() {
               {BRANDS.map((b) => (
                 <Link
                   key={b.slug}
-                  href={`/danh-muc/${b.slug}/yacht-master`}
+                  href={b.slug === "audemars-piguet" ? "/danh-muc/audemars-piguet/code-11-59" : `/danh-muc/${b.slug}/yacht-master`}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-xs text-[#1A1A1A] hover:text-[#8C5824] py-1"
                 >
