@@ -33,6 +33,9 @@ export default function Header() {
 
   const isHome = pathname === "/";
   const isServices = pathname === "/dich-vu";
+  const isJournal = pathname === "/journal";
+  const isContact = pathname === "/lien-he";
+  const isProducts = pathname?.startsWith("/danh-muc") || pathname?.startsWith("/san-pham");
   const isTransparent = isDarkHeroPage && !scrolled && !mobileMenuOpen;
 
   const navLinkClass = (isActive = false) => {
@@ -90,7 +93,7 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Center Navigation matching sample */}
+        {/* Center Navigation */}
         <nav className="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.15em] font-semibold">
           {/* TRANG CHỦ */}
           <Link
@@ -105,28 +108,36 @@ export default function Header() {
             Trang Chủ
           </Link>
 
-          {/* Thương Hiệu Dropdown */}
+          {/* SẢN PHẨM Dropdown (đổi tên từ Thương Hiệu & là menu danh mục sản phẩm duy nhất) */}
           <div
             className="relative"
             onMouseEnter={() => setBrandDropdownOpen(true)}
             onMouseLeave={() => setBrandDropdownOpen(false)}
           >
-            <button className={`flex items-center gap-1.5 py-2 transition-colors ${isTransparent
-              ? "text-white/90 hover:text-[#D4AF37] drop-shadow-sm"
-              : "text-[#1A1A1A] hover:text-[#8C5824]"
-              }`}>
-              <span>Thương Hiệu</span>
+            <button
+              className={`flex items-center gap-1.5 py-2 transition-colors ${
+                isProducts
+                  ? isTransparent
+                    ? "text-white font-bold border-b-2 border-white drop-shadow-sm"
+                    : "text-[#8C5824] font-bold border-b-2 border-[#8C5824]"
+                  : isTransparent
+                  ? "text-white/90 hover:text-[#D4AF37] drop-shadow-sm"
+                  : "text-[#1A1A1A] hover:text-[#8C5824]"
+              }`}
+            >
+              <span>Sản Phẩm</span>
               <ChevronDown
                 size={13}
-                className={`transition-transform duration-200 ${brandDropdownOpen ? "rotate-180" : ""
-                  } ${isTransparent ? "text-white/80" : "text-neutral-500"}`}
+                className={`transition-transform duration-200 ${
+                  brandDropdownOpen ? "rotate-180" : ""
+                } ${isTransparent ? "text-white/80" : "text-neutral-500"}`}
               />
             </button>
 
             {brandDropdownOpen && (
               <div className="absolute top-full -left-4 w-60 bg-white border border-[#EAE5DD] rounded-sm shadow-xl py-2 px-1 z-50">
                 <div className="text-[10px] text-neutral-400 uppercase px-3 py-1.5 border-b border-neutral-100 font-semibold tracking-wider">
-                  Thương hiệu cao cấp
+                  Danh mục sản phẩm
                 </div>
                 {BRANDS.map((b) => {
                   const href =
@@ -158,17 +169,17 @@ export default function Header() {
           </Link>
 
           {/* JOURNAL */}
-          {/* <Link
-            href="/#journal"
-            className={navLinkClass(false)}
+          <Link
+            href="/journal"
+            className={navLinkClass(isJournal)}
           >
             Journal
-          </Link> */}
+          </Link>
 
           {/* LIÊN HỆ */}
           <Link
-            href="/dich-vu#booking"
-            className={navLinkClass(false)}
+            href="/lien-he"
+            className={navLinkClass(isContact)}
           >
             Liên Hệ
           </Link>
@@ -224,9 +235,10 @@ export default function Header() {
           >
             Trang Chủ
           </Link>
+
           <div className="pt-2 border-t border-[#EAE5DD]">
             <p className="text-[10px] uppercase text-neutral-400 font-bold tracking-wider mb-2">
-              Thương Hiệu
+              Sản Phẩm (Thương Hiệu)
             </p>
             <div className="grid grid-cols-2 gap-2">
               {BRANDS.map((b) => {
@@ -249,32 +261,27 @@ export default function Header() {
               })}
             </div>
           </div>
-          <Link
-            href="/danh-muc/rolex/yacht-master"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-xs uppercase tracking-wider font-semibold text-[#1A1A1A] pt-2 border-t border-[#EAE5DD]"
-          >
-            Sản Phẩm
-          </Link>
+
           <Link
             href="/dich-vu"
             onClick={() => setMobileMenuOpen(false)}
-            className={`block text-xs uppercase tracking-wider font-semibold ${isServices ? "text-[#8C5824]" : "text-[#1A1A1A]"
-              }`}
+            className={`block text-xs uppercase tracking-wider font-semibold ${isServices ? "text-[#8C5824]" : "text-[#1A1A1A]"}`}
           >
             Dịch Vụ
           </Link>
+
           <Link
-            href="/#journal"
+            href="/journal"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-xs uppercase tracking-wider font-semibold text-[#1A1A1A]"
+            className={`block text-xs uppercase tracking-wider font-semibold ${isJournal ? "text-[#8C5824]" : "text-[#1A1A1A]"}`}
           >
             Journal
           </Link>
+
           <Link
-            href="/dich-vu#booking"
+            href="/lien-he"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-xs uppercase tracking-wider font-semibold text-[#1A1A1A]"
+            className={`block text-xs uppercase tracking-wider font-semibold ${isContact ? "text-[#8C5824]" : "text-[#1A1A1A]"}`}
           >
             Liên Hệ
           </Link>

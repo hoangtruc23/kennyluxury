@@ -7,6 +7,12 @@ import { formatPrice, toSlug } from "@/lib/utils";
 import ProductGrid from "@/components/ProductGrid";
 import { Phone, MessageCircle, ShieldCheck, Clock, Award, ChevronRight } from "lucide-react";
 
+export function generateStaticParams() {
+  return PRODUCTS.map((product) => ({
+    slug: product.slug,
+  }));
+}
+
 interface ProductPageProps {
   params: {
     slug: string;
