@@ -32,6 +32,7 @@ export default function Header() {
   }, []);
 
   const isHome = pathname === "/";
+  const isBrandPage = pathname === "/thuong-hieu";
   const isServices = pathname === "/dich-vu";
   const isJournal = pathname === "/journal";
   const isContact = pathname === "/lien-he";
@@ -57,7 +58,7 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${isTransparent
         ? "bg-transparent border-b border-transparent shadow-none"
-        : "bg-[#FBF9F5]/95 backdrop-blur-md border-b border-[#EAE5DD]/80 shadow-xs"
+        : "bg-[#F6F2EA]/95 backdrop-blur-md border-b border-[#EAE5DD]/80 shadow-xs"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -93,7 +94,7 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Center Navigation */}
+        {/* Center Navigation matching design */}
         <nav className="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.15em] font-semibold">
           {/* TRANG CHỦ */}
           <Link
@@ -108,7 +109,15 @@ export default function Header() {
             Trang Chủ
           </Link>
 
-          {/* SẢN PHẨM Dropdown (đổi tên từ Thương Hiệu & là menu danh mục sản phẩm duy nhất) */}
+          {/* THƯƠNG HIỆU */}
+          <Link
+            href="/thuong-hieu"
+            className={navLinkClass(isBrandPage)}
+          >
+            Thương Hiệu
+          </Link>
+
+          {/* SẢN PHẨM Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setBrandDropdownOpen(true)}
@@ -150,7 +159,7 @@ export default function Header() {
                     <Link
                       key={b.slug}
                       href={href}
-                      className="block px-3 py-2 text-xs text-[#1A1A1A] hover:text-[#8C5824] hover:bg-[#FBF9F5] rounded-sm transition-colors"
+                      className="block px-3 py-2 text-xs text-[#1A1A1A] hover:text-[#8C5824] hover:bg-[#F6F2EA] rounded-sm transition-colors"
                     >
                       {b.name}
                     </Link>
@@ -226,7 +235,7 @@ export default function Header() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#EAE5DD] bg-[#FBF9F5] px-6 py-6 space-y-4 shadow-xl">
+        <div className="lg:hidden border-t border-[#EAE5DD] bg-[#F6F2EA] px-6 py-6 space-y-4 shadow-xl">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
@@ -236,9 +245,17 @@ export default function Header() {
             Trang Chủ
           </Link>
 
+          <Link
+            href="/thuong-hieu"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`block text-xs uppercase tracking-wider font-semibold ${isBrandPage ? "text-[#8C5824]" : "text-[#1A1A1A]"}`}
+          >
+            Thương Hiệu
+          </Link>
+
           <div className="pt-2 border-t border-[#EAE5DD]">
             <p className="text-[10px] uppercase text-neutral-400 font-bold tracking-wider mb-2">
-              Sản Phẩm (Thương Hiệu)
+              Sản Phẩm (Danh mục)
             </p>
             <div className="grid grid-cols-2 gap-2">
               {BRANDS.map((b) => {

@@ -29,11 +29,11 @@ export default function JournalPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] text-[#1A1A1A]">
+    <div className="min-h-screen bg-[#F6F2EA] text-[#1A1A1A]">
       {/* ========================================================================= */}
       {/* 01. HERO BANNER */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden border-b border-[#EAE5DD] py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-[#FBF9F5] via-[#F6F1E8] to-[#EAE0D0]">
+      <section className="relative overflow-hidden border-b border-[#EAE5DD] py-16 sm:py-20 lg:py-24 bg-[#F6F2EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Typography */}
@@ -59,7 +59,6 @@ export default function JournalPage() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FBF9F5]/40 via-transparent to-transparent" />
               </div>
             </div>
           </div>
@@ -79,10 +78,11 @@ export default function JournalPage() {
                   {idx > 0 && <span className="text-[#D5CEC2]">|</span>}
                   <button
                     onClick={() => setActiveCategory(cat)}
-                    className={`py-1.5 transition-colors ${activeCategory === cat
+                    className={`py-1.5 transition-colors ${
+                      activeCategory === cat
                         ? "text-[#8C5824] border-b-2 border-[#8C5824]"
                         : "text-[#1A1A1A]/70 hover:text-[#8C5824]"
-                      }`}
+                    }`}
                   >
                     {cat}
                   </button>
@@ -97,7 +97,7 @@ export default function JournalPage() {
                 placeholder="Tìm kiếm bài viết..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full text-xs py-2.5 pl-3.5 pr-10 border border-[#EAE5DD] rounded-sm bg-white focus:outline-none focus:border-[#8C5824] transition-colors"
+                className="w-full text-xs py-2.5 pl-3.5 pr-10 border border-[#EAE5DD] rounded-sm bg-[#F6F2EA] focus:outline-none focus:border-[#8C5824] transition-colors"
               />
               <button
                 aria-label="Tìm kiếm"
@@ -111,44 +111,36 @@ export default function JournalPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 03. FEATURED ARTICLES (MAIN HERO GRID) */}
+      {/* 03. FEATURED ARTICLES (MATCHING IMAGE 2 EXACTLY) */}
       {/* ========================================================================= */}
       <section className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Main Hero Featured Article Card (Left ~60%) */}
-          <div className="lg:col-span-7 bg-[#F6F2EA] rounded-sm border border-[#EAE5DD] overflow-hidden flex flex-col justify-between group shadow-xs">
-            <div className="relative h-64 sm:h-50 w-full overflow-hidden bg-neutral-900">
-              <Image
-                src="/images/skeleton-watch.jpg"
-                alt="5 yếu tố quyết định giá trị của một chiếc đồng hồ"
-                fill
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-95"
-              />
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-xs text-[#8C5824] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-xs border border-[#EAE5DD]">
-                KIẾN THỨC
-              </div>
-            </div>
-
-            <div className="p-6 sm:p-8 space-y-4 flex-1 flex flex-col justify-between">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          {/* Main Hero Featured Article Card (Left ~60%): Text Left + Image Right */}
+          <div className="lg:col-span-7 bg-[#EFEAE0]/80 rounded-sm border border-[#EAE5DD] overflow-hidden flex flex-col md:flex-row items-stretch group shadow-xs hover:border-[#8C5824] transition-all">
+            {/* Left Content Half */}
+            <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-between space-y-6">
               <div className="space-y-3">
-                <h2 className="font-serif text-2xl sm:text-3xl text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8C5824] block">
+                  KIẾN THỨC
+                </span>
+                <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
                   5 yếu tố quyết định giá trị của một chiếc đồng hồ
                 </h2>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light">
+                <p className="text-xs text-neutral-600 leading-relaxed font-light">
                   Giá trị của một chiếc đồng hồ xa xỉ không chỉ nằm ở thương hiệu, mà còn ở những yếu tố cấu thành nên sự khác biệt và giá trị trường tồn.
                 </p>
-                <div>
+                <div className="pt-2">
                   <Link
                     href="#"
                     className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#8C5824] hover:text-[#724419] transition-colors group/link"
                   >
                     <span>ĐỌC THÊM</span>
-                    <ArrowRight size={14} className="transform group-hover/link:translate-x-1 transition-transform" />
+                    <ArrowRight size={13} className="transform group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+              <div className="pt-4 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-neutral-500 font-mono">
                 <span>12.05.2024</span>
                 <span className="flex items-center gap-1">
                   <Clock size={12} />
@@ -156,36 +148,49 @@ export default function JournalPage() {
                 </span>
               </div>
             </div>
+
+            {/* Right Image Half */}
+            <div className="relative md:w-1/2 min-h-[240px] md:min-h-full overflow-hidden bg-neutral-900">
+              <Image
+                src="/images/skeleton-watch.jpg"
+                alt="5 yếu tố quyết định giá trị của một chiếc đồng hồ"
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
           </div>
 
           {/* Right 2 Stacked Cards (Right ~40%) */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-6">
             {/* Top Right Card: Patek Philippe Nautilus */}
-            <div className="bg-[#F6F2EA] rounded-sm border border-[#EAE5DD] overflow-hidden p-5 flex flex-col sm:flex-row gap-4 items-center group shadow-xs hover:border-[#8C5824] transition-colors">
-              <div className="flex-1 space-y-2.5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8C5824] block">
-                  BỘ SƯU TẬP
-                </span>
-                <h3 className="font-serif text-base sm:text-lg text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
-                  Patek Philippe Nautilus 5712R – Biểu tượng của sự thanh lịch vượt thời gian
-                </h3>
-                <Link
-                  href="#"
-                  className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#8C5824] hover:text-[#724419] transition-colors"
-                >
-                  <span>ĐỌC THÊM</span>
-                  <ArrowRight size={12} />
-                </Link>
-                <div className="pt-2 text-[11px] text-neutral-400 font-mono flex items-center gap-3">
+            <div className="bg-[#EFEAE0]/80 rounded-sm border border-[#EAE5DD] overflow-hidden flex flex-col sm:flex-row items-stretch group shadow-xs hover:border-[#8C5824] transition-all h-full">
+              <div className="p-5 sm:p-6 sm:w-3/5 flex flex-col justify-between space-y-3">
+                <div className="space-y-2">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#8C5824] block">
+                    BỘ SƯU TẬP
+                  </span>
+                  <h3 className="font-serif text-sm sm:text-base text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
+                    Patek Philippe Nautilus 5712R – Biểu tượng của sự thanh lịch vượt thời gian
+                  </h3>
+                  <Link
+                    href="#"
+                    className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#8C5824] hover:text-[#724419] transition-colors"
+                  >
+                    <span>ĐỌC THÊM</span>
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
+
+                <div className="pt-2 text-[11px] text-neutral-500 font-mono flex items-center gap-3">
                   <span>10.05.2024</span>
                   <span>•</span>
                   <span>4 phút đọc</span>
                 </div>
               </div>
 
-              <div className="relative w-full sm:w-36 h-36 flex-shrink-0 rounded-xs overflow-hidden bg-white border border-[#EAE5DD]">
+              <div className="relative sm:w-2/5 min-h-[140px] sm:min-h-full overflow-hidden bg-neutral-900 flex-shrink-0">
                 <Image
-                  src="/images/faq-watch.jpg"
+                  src="/images/watches/Dong-Ho-Rolex-Yacht-Master-40-126622-0002-Mat-So-Xanh-1.png"
                   alt="Patek Philippe Nautilus 5712R"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -194,31 +199,34 @@ export default function JournalPage() {
             </div>
 
             {/* Bottom Right Card: Xu hướng đồng hồ 2024 */}
-            <div className="bg-[#F6F2EA] rounded-sm border border-[#EAE5DD] overflow-hidden p-5 flex flex-col sm:flex-row gap-4 items-center group shadow-xs hover:border-[#8C5824] transition-colors">
-              <div className="flex-1 space-y-2.5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8C5824] block">
-                  XU HƯỚNG
-                </span>
-                <h3 className="font-serif text-base sm:text-lg text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
-                  Xu hướng đồng hồ 2024: Sự trở lại của những thiết kế cổ điển
-                </h3>
-                <Link
-                  href="#"
-                  className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#8C5824] hover:text-[#724419] transition-colors"
-                >
-                  <span>ĐỌC THÊM</span>
-                  <ArrowRight size={12} />
-                </Link>
-                <div className="pt-2 text-[11px] text-neutral-400 font-mono flex items-center gap-3">
+            <div className="bg-[#EFEAE0]/80 rounded-sm border border-[#EAE5DD] overflow-hidden flex flex-col sm:flex-row items-stretch group shadow-xs hover:border-[#8C5824] transition-all h-full">
+              <div className="p-5 sm:p-6 sm:w-3/5 flex flex-col justify-between space-y-3">
+                <div className="space-y-2">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#8C5824] block">
+                    XU HƯỚNG
+                  </span>
+                  <h3 className="font-serif text-sm sm:text-base text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
+                    Xu hướng đồng hồ 2024: Sự trở lại của những thiết kế cổ điển
+                  </h3>
+                  <Link
+                    href="#"
+                    className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#8C5824] hover:text-[#724419] transition-colors"
+                  >
+                    <span>ĐỌC THÊM</span>
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
+
+                <div className="pt-2 text-[11px] text-neutral-500 font-mono flex items-center gap-3">
                   <span>08.05.2024</span>
                   <span>•</span>
                   <span>4 phút đọc</span>
                 </div>
               </div>
 
-              <div className="relative w-full sm:w-36 h-36 flex-shrink-0 rounded-xs overflow-hidden bg-white border border-[#EAE5DD]">
+              <div className="relative sm:w-2/5 min-h-[140px] sm:min-h-full overflow-hidden bg-neutral-900 flex-shrink-0">
                 <Image
-                  src="/images/showroom-hero_.jpg"
+                  src="/images/showroom-lounge.jpg"
                   alt="Xu hướng đồng hồ 2024"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -230,12 +238,12 @@ export default function JournalPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 04. 3-COLUMN ARTICLES GRID */}
+      {/* 04. 3-COLUMN ARTICLES GRID (MATCHING IMAGE 2 EXACTLY) */}
       {/* ========================================================================= */}
       <section className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
-          <div className="bg-[#F6F2EA] rounded-sm border border-[#EAE5DD] overflow-hidden group shadow-xs hover:border-[#8C5824] transition-colors flex flex-col justify-between">
+          <div className="bg-[#EFEAE0]/80 rounded-sm border border-[#EAE5DD] overflow-hidden group shadow-xs hover:border-[#8C5824] transition-all flex flex-col justify-between">
             <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-neutral-900">
               <Image
                 src="/images/showroom-hero.jpg"
@@ -243,12 +251,12 @@ export default function JournalPage() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute top-3 left-3 bg-white/90 text-[#8C5824] text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-xs">
+              <div className="absolute top-3 left-3 text-[#D4AF37] text-[10px] font-bold uppercase tracking-widest drop-shadow-md">
                 KIẾN THỨC
               </div>
             </div>
 
-            <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
+            <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
               <div className="space-y-2">
                 <h3 className="font-serif text-base sm:text-lg text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
                   Quy trình bảo dưỡng đồng hồ chuẩn Thụy Sĩ gồm những gì?
@@ -262,7 +270,7 @@ export default function JournalPage() {
                 </Link>
               </div>
 
-              <div className="pt-3 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+              <div className="pt-3 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-neutral-500 font-mono">
                 <span>05.05.2024</span>
                 <span className="flex items-center gap-1">
                   <Clock size={12} />
@@ -273,20 +281,20 @@ export default function JournalPage() {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#F6F2EA] rounded-sm border border-[#EAE5DD] overflow-hidden group shadow-xs hover:border-[#8C5824] transition-colors flex flex-col justify-between">
+          <div className="bg-[#EFEAE0]/80 rounded-sm border border-[#EAE5DD] overflow-hidden group shadow-xs hover:border-[#8C5824] transition-all flex flex-col justify-between">
             <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-neutral-900">
               <Image
-                src="/images/watches/Dong-Ho-Rolex-Yacht-Master-40-126622-0002-Mat-So-Xanh-1.png"
+                src="/images/faq-watch.jpg"
                 alt="Lịch sử thương hiệu Rolex"
                 fill
-                className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute top-3 left-3 bg-white/90 text-[#8C5824] text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-xs">
+              <div className="absolute top-3 left-3 text-[#D4AF37] text-[10px] font-bold uppercase tracking-widest drop-shadow-md">
                 CÂU CHUYỆN THƯƠNG HIỆU
               </div>
             </div>
 
-            <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
+            <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
               <div className="space-y-2">
                 <h3 className="font-serif text-base sm:text-lg text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
                   Lịch sử hình thành và phát triển của thương hiệu Rolex
@@ -300,7 +308,7 @@ export default function JournalPage() {
                 </Link>
               </div>
 
-              <div className="pt-3 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+              <div className="pt-3 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-neutral-500 font-mono">
                 <span>03.05.2024</span>
                 <span className="flex items-center gap-1">
                   <Clock size={12} />
@@ -311,7 +319,7 @@ export default function JournalPage() {
           </div>
 
           {/* Card 3 */}
-          <div className="bg-[#F6F2EA] rounded-sm border border-[#EAE5DD] overflow-hidden group shadow-xs hover:border-[#8C5824] transition-colors flex flex-col justify-between">
+          <div className="bg-[#EFEAE0]/80 rounded-sm border border-[#EAE5DD] overflow-hidden group shadow-xs hover:border-[#8C5824] transition-all flex flex-col justify-between">
             <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-neutral-900">
               <Image
                 src="/images/showroom-lounge.jpg"
@@ -319,12 +327,12 @@ export default function JournalPage() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute top-3 left-3 bg-white/90 text-[#8C5824] text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-xs">
+              <div className="absolute top-3 left-3 text-[#D4AF37] text-[10px] font-bold uppercase tracking-widest drop-shadow-md">
                 SỰ KIỆN
               </div>
             </div>
 
-            <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
+            <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
               <div className="space-y-2">
                 <h3 className="font-serif text-base sm:text-lg text-[#1A1A1A] font-normal leading-snug group-hover:text-[#8C5824] transition-colors">
                   Watches &amp; Wonders 2024: Những điểm nhấn ấn tượng
@@ -338,7 +346,7 @@ export default function JournalPage() {
                 </Link>
               </div>
 
-              <div className="pt-3 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-neutral-400 font-mono">
+              <div className="pt-3 border-t border-[#EAE5DD] flex items-center justify-between text-[11px] text-neutral-500 font-mono">
                 <span>01.05.2024</span>
                 <span className="flex items-center gap-1">
                   <Clock size={12} />
@@ -355,28 +363,28 @@ export default function JournalPage() {
         <div className="flex items-center justify-center gap-2 pt-12">
           <button
             aria-label="Trang trước"
-            className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-white hover:border-[#8C5824] flex items-center justify-center text-xs text-neutral-600 transition-colors"
+            className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-[#F6F2EA] hover:border-[#8C5824] flex items-center justify-center text-xs text-neutral-600 transition-colors"
           >
             <ChevronLeft size={14} />
           </button>
           <button className="w-8 h-8 rounded-full bg-[#1A1A1A] text-white font-bold text-xs flex items-center justify-center shadow-xs">
             1
           </button>
-          <button className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-white hover:border-[#8C5824] text-xs text-neutral-600 flex items-center justify-center transition-colors">
+          <button className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-[#F6F2EA] hover:border-[#8C5824] text-xs text-neutral-600 flex items-center justify-center transition-colors">
             2
           </button>
-          <button className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-white hover:border-[#8C5824] text-xs text-neutral-600 flex items-center justify-center transition-colors">
+          <button className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-[#F6F2EA] hover:border-[#8C5824] text-xs text-neutral-600 flex items-center justify-center transition-colors">
             3
           </button>
-          <button className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-white hover:border-[#8C5824] text-xs text-neutral-600 flex items-center justify-center transition-colors">
+          <button className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-[#F6F2EA] hover:border-[#8C5824] text-xs text-neutral-600 flex items-center justify-center transition-colors">
             4
           </button>
-          <button className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-white hover:border-[#8C5824] text-xs text-neutral-600 flex items-center justify-center transition-colors">
+          <button className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-[#F6F2EA] hover:border-[#8C5824] text-xs text-neutral-600 flex items-center justify-center transition-colors">
             5
           </button>
           <button
             aria-label="Trang sau"
-            className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-white hover:border-[#8C5824] flex items-center justify-center text-xs text-neutral-600 transition-colors"
+            className="w-8 h-8 rounded-sm border border-[#EAE5DD] bg-[#F6F2EA] hover:border-[#8C5824] flex items-center justify-center text-xs text-neutral-600 transition-colors"
           >
             <ChevronRight size={14} />
           </button>
@@ -399,7 +407,7 @@ export default function JournalPage() {
             </div>
 
             {subscribed ? (
-              <div className="bg-white border border-[#8C5824] px-6 py-3.5 rounded-sm text-xs text-[#8C5824] font-bold uppercase tracking-wider">
+              <div className="bg-[#F6F2EA] border border-[#8C5824] px-6 py-3.5 rounded-sm text-xs text-[#8C5824] font-bold uppercase tracking-wider">
                 ✓ Đã đăng ký nhận bản tin thành công!
               </div>
             ) : (
@@ -410,7 +418,7 @@ export default function JournalPage() {
                   placeholder="Nhập email của bạn"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 text-xs p-3.5 border border-[#D5CEC2] rounded-sm bg-white focus:outline-none focus:border-[#8C5824] transition-colors"
+                  className="flex-1 text-xs p-3.5 border border-[#D5CEC2] rounded-sm bg-[#F6F2EA] focus:outline-none focus:border-[#8C5824] transition-colors"
                 />
                 <button
                   type="submit"

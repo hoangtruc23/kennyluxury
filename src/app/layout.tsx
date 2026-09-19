@@ -32,7 +32,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#FBF9F5] text-[#1A1A1A] antialiased selection:bg-[#8C5824] selection:text-white">
+      <body className="bg-[#F6F2EA] text-[#1A1A1A] antialiased selection:bg-[#8C5824] selection:text-white">
         <Header />
         <main className="min-h-[70vh]">{children}</main>
         <Footer />

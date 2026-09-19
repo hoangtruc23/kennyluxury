@@ -21,6 +21,10 @@ import {
   ArrowRight,
   Plus,
   Minus,
+  Coins,
+  Package,
+  Repeat,
+  Wrench,
 } from "lucide-react";
 
 export default function ServicesPage() {
@@ -33,7 +37,7 @@ export default function ServicesPage() {
       desc: "Định giá minh bạch, cạnh tranh và thanh toán nhanh chóng.",
       image: "/images/showroom-hero.jpg",
       link: "/lien-he#booking",
-      imageFirst: true,
+      icon: Coins,
     },
     {
       num: "02",
@@ -41,7 +45,7 @@ export default function ServicesPage() {
       desc: "Tiếp cận mạng lưới khách hàng cao cấp và tiềm năng.",
       image: "/images/faq-watch.jpg",
       link: "/lien-he#booking",
-      imageFirst: false,
+      icon: Package,
     },
     {
       num: "03",
@@ -49,7 +53,7 @@ export default function ServicesPage() {
       desc: "Nâng cấp bộ sưu tập của bạn với quy trình linh hoạt.",
       image: "/images/watches/Dong-Ho-Rolex-Yacht-Master-40-126622-0002-Mat-So-Xanh-1.png",
       link: "/lien-he#booking",
-      imageFirst: true,
+      icon: Repeat,
     },
     {
       num: "04",
@@ -57,7 +61,7 @@ export default function ServicesPage() {
       desc: "Kiểm tra, vệ sinh và bảo dưỡng theo tiêu chuẩn Thụy Sĩ.",
       image: "/images/skeleton-watch.jpg",
       link: "/lien-he#booking",
-      imageFirst: false,
+      icon: Wrench,
     },
   ];
 
@@ -137,11 +141,11 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] text-[#1A1A1A]">
+    <div className="min-h-screen bg-[#F6F2EA] text-[#1A1A1A]">
       {/* ========================================================================= */}
       {/* 01. HERO SECTION */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden border-b border-[#EAE5DD] py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-[#FBF9F5] via-[#F6F1E8] to-[#EAE0D0]">
+      <section className="relative overflow-hidden border-b border-[#EAE5DD] py-16 sm:py-20 lg:py-24 bg-[#F6F2EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Content */}
@@ -221,57 +225,58 @@ export default function ServicesPage() {
           </Link>
         </div>
 
-        {/* 2x2 Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {services.map((item) => (
-            <div
-              key={item.num}
-              className="bg-[#F6F2EA] border border-[#EAE5DD] rounded-sm overflow-hidden flex flex-col sm:flex-row items-stretch group hover:border-[#8C5824] transition-all shadow-xs"
-            >
-              {/* Image half */}
+        {/* 2x2 Services Grid (Matching Mockup: Darker Warm Beige Background & Exact Layout) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          {services.map((item) => {
+            const IconComp = item.icon;
+            return (
               <div
-                className={`relative w-full sm:w-1/2 h-52 sm:h-auto overflow-hidden bg-white ${
-                  item.imageFirst ? "order-1" : "order-1 sm:order-2"
-                }`}
+                key={item.num}
+                className="bg-[#EFEAE0] border border-[#DCD3C5] rounded-sm overflow-hidden flex flex-col sm:flex-row items-stretch group hover:border-[#8C5824] transition-all shadow-xs"
               >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-
-              {/* Text Content half */}
-              <div
-                className={`p-6 sm:p-8 w-full sm:w-1/2 flex flex-col justify-between space-y-4 ${
-                  item.imageFirst ? "order-2" : "order-2 sm:order-1"
-                }`}
-              >
-                <div className="space-y-2">
-                  <span className="font-serif text-2xl text-[#8C5824] font-light block">
-                    {item.num}
-                  </span>
-                  <h3 className="font-serif text-xl text-[#1A1A1A] font-normal tracking-wide uppercase">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-neutral-600 leading-relaxed font-light">
-                    {item.desc}
-                  </p>
+                {/* Image half (Always Left) */}
+                <div className="relative w-full sm:w-1/2 min-h-[210px] sm:min-h-full overflow-hidden bg-neutral-900 flex-shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
 
-                <div>
-                  <Link
-                    href={item.link}
-                    className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-[#8C5824] hover:text-[#724419] transition-colors group/link"
-                  >
-                    <span>TÌM HIỂU THÊM</span>
-                    <ArrowRight size={13} className="transform group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
+                {/* Text Content half (Always Right - Darker Beige Background) */}
+                <div className="p-6 sm:p-7 w-full sm:w-1/2 flex flex-col justify-between space-y-4 bg-[#EFEAE0]">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full border border-[#C5B8A5] bg-[#FAF7F2] text-[#8C5824] flex items-center justify-center flex-shrink-0">
+                        <IconComp size={16} />
+                      </div>
+                      <span className="font-serif text-2xl sm:text-3xl text-[#8C5824] font-normal tracking-wide">
+                        {item.num}
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-lg sm:text-xl text-[#1A1A1A] font-normal tracking-[0.15em] uppercase pt-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-[#5A4A3D] leading-relaxed font-light">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div>
+                    <Link
+                      href={item.link}
+                      className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-[#8C5824] hover:text-[#724419] transition-colors group/link"
+                    >
+                      <span>TÌM HIỂU THÊM</span>
+                      <ArrowRight size={13} className="transform group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -300,8 +305,8 @@ export default function ServicesPage() {
               return (
                 <div key={idx} className="relative space-y-4 text-center group">
                   {/* Icon Circle */}
-                  <div className="w-16 h-16 rounded-full bg-white border border-[#EAE5DD] text-[#8C5824] flex items-center justify-center mx-auto shadow-xs group-hover:border-[#8C5824] group-hover:bg-[#8C5824] group-hover:text-white transition-all">
-                    <IconComp size={24} />
+                  <div className="w-14 h-14 rounded-full bg-white border border-[#EAE5DD] text-[#8C5824] flex items-center justify-center mx-auto shadow-xs group-hover:border-[#8C5824] group-hover:bg-[#8C5824] group-hover:text-white transition-all">
+                    <IconComp size={22} />
                   </div>
 
                   <h3 className="font-serif text-xs font-bold uppercase tracking-wider text-[#1A1A1A] pt-1">
@@ -319,9 +324,9 @@ export default function ServicesPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 04. WHY CHOOSE OUR SERVICE (DARK BRONZE SECTION) */}
+      {/* 04. WHY CHOOSE OUR SERVICE (DARK BRONZE SECTION - MATCHING MOCKUP) */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#4F3F34] text-white border-b border-[#EAE5DD]">
+      <section className="py-20 bg-[#4A3B32] text-white border-b border-[#EAE5DD]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="flex items-start gap-3 mb-14 pb-4 border-b border-white/20">
@@ -336,13 +341,13 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          {/* 6 Feature Items */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+          {/* 6 Feature Items with Divider Lines */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-0 sm:divide-x divide-white/15 text-center">
             {whyChooseUs.map((item, idx) => {
               const IconComp = item.icon;
               return (
-                <div key={idx} className="space-y-3 p-4 flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full border border-[#D4AF37]/40 bg-white/10 text-[#D4AF37] flex items-center justify-center mx-auto mb-1">
+                <div key={idx} className="space-y-3 px-3 py-2 flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full border border-[#D4AF37]/50 bg-white/10 text-[#D4AF37] flex items-center justify-center mx-auto mb-1">
                     <IconComp size={22} />
                   </div>
                   <h3 className="font-serif text-xs font-bold uppercase tracking-wider text-white">
@@ -359,7 +364,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 05. LUXURY EXPERIENCE */}
+      {/* 05. LUXURY EXPERIENCE (KEPT INTACT AS REQUESTED BY USER) */}
       {/* ========================================================================= */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-[#EAE5DD]">
         {/* Header */}
@@ -456,29 +461,29 @@ export default function ServicesPage() {
             </Link>
           </div>
 
-          {/* Accordion List */}
-          <div className="max-w-4xl mx-auto space-y-3">
+          {/* Accordion List (Matching Mockup with light border) */}
+          <div className="max-w-5xl mx-auto space-y-3">
             {faqs.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
                 <div
                   key={index}
-                  className="border border-[#EAE5DD] rounded-sm bg-white overflow-hidden transition-all"
+                  className="border border-[#EAE5DD] rounded-sm bg-[#F6F2EA] overflow-hidden transition-all shadow-2xs"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full p-4 sm:p-5 flex justify-between items-center text-left hover:bg-[#FBF9F5] transition-colors"
+                    className="w-full p-4 sm:p-5 flex justify-between items-center text-left hover:bg-[#EFEBE4] transition-colors"
                   >
-                    <span className="text-xs sm:text-sm font-semibold text-[#1A1A1A] pr-4">
+                    <span className="text-xs sm:text-sm font-medium text-[#1A1A1A] pr-4">
                       {faq.q}
                     </span>
-                    <span className="w-6 h-6 rounded-full border border-[#D5CEC2] flex items-center justify-center text-[#8C5824] flex-shrink-0">
-                      {isOpen ? <Minus size={13} /> : <Plus size={13} />}
+                    <span className="text-neutral-400 font-mono text-base flex-shrink-0">
+                      {isOpen ? <Minus size={14} /> : <Plus size={14} />}
                     </span>
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 pt-1 text-xs text-neutral-600 leading-relaxed border-t border-neutral-100 font-light">
+                    <div className="px-5 pb-5 pt-1 text-xs text-neutral-600 leading-relaxed border-t border-[#EAE5DD]/60 font-light">
                       {faq.a}
                     </div>
                   )}

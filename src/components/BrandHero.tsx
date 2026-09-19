@@ -69,7 +69,7 @@ export default function BrandHero({
 
   // Fallback to static image hero
   return (
-    <section className="relative w-full bg-gradient-to-r from-[#FBF9F5] via-[#F6F2EA] to-[#EDE7DC] border-b border-[#EAE5DD] overflow-hidden py-14 md:py-20">
+    <section className="relative w-full bg-gradient-to-r from-[#F6F2EA] via-[#F6F2EA] to-[#EDE7DC] border-b border-[#EAE5DD] overflow-hidden py-14 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Typography & CTAs */}

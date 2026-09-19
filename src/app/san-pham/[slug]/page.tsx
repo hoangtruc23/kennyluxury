@@ -37,7 +37,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
   const collectionSlug = toSlug(product.collection);
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] text-[#1A1A1A] py-8 sm:py-12">
+    <div className="min-h-screen bg-[#F6F2EA] text-[#1A1A1A] py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="text-xs text-neutral-500 mb-8 flex flex-wrap items-center gap-2">
@@ -178,7 +178,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 </div>
               )}
               {product.specs.caseMaterial && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#FBF9F5]">
+                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#F6F2EA]">
                   <span className="text-neutral-500 font-medium">Chất liệu vỏ:</span>
                   <span className="md:col-span-2 text-[#1A1A1A] font-medium">
                     {product.specs.caseMaterial}
@@ -194,7 +194,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 </div>
               )}
               {product.specs.dialColor && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#FBF9F5]">
+                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#F6F2EA]">
                   <span className="text-neutral-500 font-medium">Mặt số:</span>
                   <span className="md:col-span-2 text-[#1A1A1A] font-medium">
                     {product.specs.dialColor}
@@ -210,7 +210,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 </div>
               )}
               {product.specs.braceletMaterial && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#FBF9F5]">
+                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#F6F2EA]">
                   <span className="text-neutral-500 font-medium">Dây đeo:</span>
                   <span className="md:col-span-2 text-[#1A1A1A] font-medium">
                     {product.specs.braceletMaterial}
@@ -226,7 +226,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 </div>
               )}
               {product.specs.condition && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#FBF9F5]">
+                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#F6F2EA]">
                   <span className="text-neutral-500 font-medium">Tình trạng:</span>
                   <span className="md:col-span-2 text-[#8C5824] font-semibold">
                     {product.specs.condition}

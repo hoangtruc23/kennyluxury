@@ -75,7 +75,7 @@ export default function ShowroomExperience() {
             {subSpaces.map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col rounded-sm overflow-hidden bg-white border border-[#EAE5DD] shadow-xs group hover:border-[#8C5824] transition-colors"
+                className="flex flex-col rounded-sm overflow-hidden bg-[#F6F2EA] border border-[#EAE5DD] shadow-xs group hover:border-[#8C5824] transition-colors"
               >
                 <div className="relative h-44 sm:h-48 overflow-hidden">
                   <Image

@@ -49,19 +49,21 @@ export default function WhyChooseUs() {
         </div>
       </div>
 
-      {/* 6 Grid items */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+      {/* 6 Grid columns without white card boxes */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-[#EAE5DD] text-center">
         {reasons.map((item, idx) => {
           const IconComp = item.icon;
           return (
             <div
               key={idx}
-              className="p-5 sm:p-6 rounded-sm border border-[#EAE5DD] bg-white shadow-xs space-y-3 hover:border-[#8C5824] transition-all group flex flex-col items-center justify-start min-h-[190px]"
+              className={`space-y-3 px-2 pt-4 sm:pt-0 flex flex-col items-center justify-start ${
+                idx !== 0 ? "sm:pl-4" : ""
+              }`}
             >
-              <div className="w-12 h-12 rounded-full bg-[#F6F2EA] text-[#8C5824] group-hover:bg-[#8C5824] group-hover:text-white flex items-center justify-center transition-colors">
-                <IconComp size={22} />
+              <div className="w-12 h-12 rounded-full border border-[#EAE5DD] bg-[#F6F2EA] text-[#8C5824] flex items-center justify-center mx-auto mb-1 shadow-2xs">
+                <IconComp size={22} strokeWidth={1.5} />
               </div>
-              <h3 className="font-serif text-xs font-bold uppercase tracking-wider text-[#1A1A1A] pt-1">
+              <h3 className="font-serif text-xs font-bold uppercase tracking-wider text-[#1A1A1A]">
                 {item.title}
               </h3>
               <p className="text-[11px] text-neutral-500 leading-relaxed font-light">

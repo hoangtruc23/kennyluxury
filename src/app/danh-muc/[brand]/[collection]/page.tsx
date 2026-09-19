@@ -283,7 +283,7 @@ export default function CollectionPage() {
   }, [brandSlug, filters, sortBy]);
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] text-[#1A1A1A]">
+    <div className="min-h-screen bg-[#F6F2EA] text-[#1A1A1A]">
       {/* 1. Large Brand Hero Banner */}
       <BrandHero
         brandName={brand.name}
@@ -412,7 +412,7 @@ export default function CollectionPage() {
       {/* Mobile Drawer */}
       {mobileFilterOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end lg:hidden">
-          <div className="w-80 max-w-full bg-[#FBF9F5] h-full p-6 overflow-y-auto border-l border-[#EAE5DD] flex flex-col justify-between">
+          <div className="w-80 max-w-full bg-[#F6F2EA] h-full p-6 overflow-y-auto border-l border-[#EAE5DD] flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-[#EAE5DD] mb-6">
                 <span className="font-serif text-base text-[#1A1A1A] font-bold uppercase tracking-wider">

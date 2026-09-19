@@ -10,7 +10,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="bordered-grid-item group flex flex-col justify-between p-6 bg-white relative hover:bg-neutral-50/50 transition-colors">
+    <div className="bordered-grid-item group flex flex-col justify-between p-6 bg-[#F6F2EA] relative hover:bg-[#EFEBE4] transition-colors">
       {/* Stock badge if pre-order */}
       {product.stockStatus === "pre_order" && (
         <span className="absolute top-4 left-4 z-10 text-[10px] uppercase font-semibold tracking-widest bg-[#8C5824]/10 text-[#8C5824] border border-[#8C5824]/30 px-2 py-0.5 rounded">

@@ -54,7 +54,7 @@ export default function JournalSection() {
           {articles.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-sm overflow-hidden border border-[#EAE5DD] shadow-xs hover:border-[#8C5824] transition-all group flex flex-col justify-between"
+              className="bg-[#F6F2EA] rounded-sm overflow-hidden border border-[#EAE5DD] shadow-xs hover:border-[#8C5824] transition-all group flex flex-col justify-between"
             >
               <div className="relative h-52 sm:h-60 overflow-hidden bg-neutral-900">
                 <Image

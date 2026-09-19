@@ -12,6 +12,7 @@ import {
   ChevronLeft,
   Plus,
   Minus,
+  Calendar,
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
@@ -54,7 +55,7 @@ export default function ContactPage() {
     },
     {
       title: "KHU TRƯNG BÀY ĐỒNG HỒ",
-      image: "/images/showroom-hero.jpg",
+      image: "/images/showroom-hero_.jpg",
     },
   ];
 
@@ -87,9 +88,11 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] text-[#1A1A1A]">
-      {/* 01. HERO: CONNECT / VISIT OUR SHOWROOM */}
-      <section className="relative border-b border-[#EAE5DD] py-16 md:py-24 bg-gradient-to-b from-[#FBF9F5] to-[#F5EFE6]">
+    <div className="min-h-screen bg-[#F6F2EA] text-[#1A1A1A]">
+      {/* ========================================================================= */}
+      {/* 01. HERO: VISIT OUR SHOWROOM */}
+      {/* ========================================================================= */}
+      <section className="relative border-b border-[#EAE5DD] py-16 md:py-24 bg-[#F6F2EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Content */}
@@ -99,8 +102,8 @@ export default function ContactPage() {
               </span>
 
               <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-normal text-[#1A1A1A] leading-[1.08] tracking-tight">
-                Liên Hệ <br />
-                Kenny Luxury
+                Visit Our <br />
+                Showroom
               </h1>
 
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-light max-w-md">
@@ -118,7 +121,7 @@ export default function ContactPage() {
 
                 <a
                   href="tel:0933336789"
-                  className="inline-flex items-center gap-2 border border-[#D5CEC2] hover:border-[#8C5824] bg-white text-[#1A1A1A] px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-[0.18em] transition-all"
+                  className="inline-flex items-center gap-2 border border-[#D5CEC2] hover:border-[#8C5824] bg-[#EFEAE0] text-[#1A1A1A] px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-[0.18em] transition-all"
                 >
                   <Phone size={14} className="text-[#8C5824]" />
                   <span>GỌI NGAY</span>
@@ -142,8 +145,10 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* ========================================================================= */}
       {/* 02. THÔNG TIN LIÊN HỆ */}
-      <section className="py-20 border-b border-[#EAE5DD] bg-[#FBF9F5]">
+      {/* ========================================================================= */}
+      <section className="py-20 border-b border-[#EAE5DD] bg-[#F6F2EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Contact Details */}
@@ -161,7 +166,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 {/* ĐỊA CHỈ */}
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-full border border-[#D5CEC2] bg-white flex items-center justify-center flex-shrink-0 text-[#8C5824] shadow-xs">
+                  <div className="w-11 h-11 rounded-full border border-[#D5CEC2] bg-[#EFEAE0] flex items-center justify-center flex-shrink-0 text-[#8C5824] shadow-xs">
                     <MapPin size={18} />
                   </div>
                   <div className="space-y-1">
@@ -177,7 +182,7 @@ export default function ContactPage() {
 
                 {/* HOTLINE */}
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-full border border-[#D5CEC2] bg-white flex items-center justify-center flex-shrink-0 text-[#8C5824] shadow-xs">
+                  <div className="w-11 h-11 rounded-full border border-[#D5CEC2] bg-[#EFEAE0] flex items-center justify-center flex-shrink-0 text-[#8C5824] shadow-xs">
                     <Phone size={18} />
                   </div>
                   <div className="space-y-1">
@@ -195,7 +200,7 @@ export default function ContactPage() {
 
                 {/* EMAIL */}
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-full border border-[#D5CEC2] bg-white flex items-center justify-center flex-shrink-0 text-[#8C5824] shadow-xs">
+                  <div className="w-11 h-11 rounded-full border border-[#D5CEC2] bg-[#EFEAE0] flex items-center justify-center flex-shrink-0 text-[#8C5824] shadow-xs">
                     <Mail size={18} />
                   </div>
                   <div className="space-y-1">
@@ -213,7 +218,7 @@ export default function ContactPage() {
 
                 {/* GIỜ MỞ CỬA */}
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-full border border-[#D5CEC2] bg-white flex items-center justify-center flex-shrink-0 text-[#8C5824] shadow-xs">
+                  <div className="w-11 h-11 rounded-full border border-[#D5CEC2] bg-[#EFEAE0] flex items-center justify-center flex-shrink-0 text-[#8C5824] shadow-xs">
                     <Clock size={18} />
                   </div>
                   <div className="space-y-1">
@@ -243,7 +248,9 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* ========================================================================= */}
       {/* 03. VỊ TRÍ SHOWROOM */}
+      {/* ========================================================================= */}
       <section className="py-20 border-b border-[#EAE5DD] bg-[#F6F2EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
@@ -254,12 +261,59 @@ export default function ContactPage() {
             <span className="h-px flex-1 bg-[#D5CEC2]" />
           </div>
 
+          {/* Luxury Stylized Map Section */}
           <div className="relative bg-[#EFE9DF] border border-[#EAE5DD] rounded-sm p-8 sm:p-12 overflow-hidden shadow-sm">
+            {/* Background Map Grid & Roads graphic */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+              <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern
+                    id="grid"
+                    width="40"
+                    height="40"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M 40 0 L 0 0 0 40"
+                      fill="none"
+                      stroke="#8C5824"
+                      strokeWidth="0.5"
+                    />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                <line
+                  x1="10%"
+                  y1="90%"
+                  x2="90%"
+                  y2="10%"
+                  stroke="#8C5824"
+                  strokeWidth="2.5"
+                />
+                <line
+                  x1="30%"
+                  y1="10%"
+                  x2="70%"
+                  y2="90%"
+                  stroke="#8C5824"
+                  strokeWidth="2"
+                />
+                <line
+                  x1="5%"
+                  y1="40%"
+                  x2="95%"
+                  y2="60%"
+                  stroke="#8C5824"
+                  strokeWidth="1.5"
+                />
+              </svg>
+            </div>
+
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Landmarks */}
               <div className="lg:col-span-4 space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white/90 backdrop-blur-xs p-3.5 rounded-sm border border-[#EAE5DD] shadow-2xs">
+                  <div className="bg-[#EFEAE0]/90 backdrop-blur-xs p-3.5 rounded-sm border border-[#EAE5DD] shadow-2xs">
                     <span className="text-[10px] text-[#8C5824] font-bold block mb-1">
                       ● Nhà Thờ Đức Bà
                     </span>
@@ -268,7 +322,7 @@ export default function ContactPage() {
                     </span>
                   </div>
 
-                  <div className="bg-white/90 backdrop-blur-xs p-3.5 rounded-sm border border-[#EAE5DD] shadow-2xs">
+                  <div className="bg-[#EFEAE0]/90 backdrop-blur-xs p-3.5 rounded-sm border border-[#EAE5DD] shadow-2xs">
                     <span className="text-[10px] text-[#8C5824] font-bold block mb-1">
                       ● Chợ Bến Thành
                     </span>
@@ -277,7 +331,7 @@ export default function ContactPage() {
                     </span>
                   </div>
 
-                  <div className="bg-white/90 backdrop-blur-xs p-3.5 rounded-sm border border-[#EAE5DD] shadow-2xs">
+                  <div className="bg-[#EFEAE0]/90 backdrop-blur-xs p-3.5 rounded-sm border border-[#EAE5DD] shadow-2xs">
                     <span className="text-[10px] text-[#8C5824] font-bold block mb-1">
                       ● Dinh Độc Lập
                     </span>
@@ -286,7 +340,7 @@ export default function ContactPage() {
                     </span>
                   </div>
 
-                  <div className="bg-white/90 backdrop-blur-xs p-3.5 rounded-sm border border-[#EAE5DD] shadow-2xs">
+                  <div className="bg-[#EFEAE0]/90 backdrop-blur-xs p-3.5 rounded-sm border border-[#EAE5DD] shadow-2xs">
                     <span className="text-[10px] text-[#8C5824] font-bold block mb-1">
                       ● Saigon Square
                     </span>
@@ -299,7 +353,7 @@ export default function ContactPage() {
 
               {/* Center: Main Store Pin Card */}
               <div className="lg:col-span-4 flex justify-center">
-                <div className="bg-white p-6 rounded-sm border-2 border-[#8C5824] shadow-xl text-center max-w-sm space-y-2">
+                <div className="bg-[#EFEAE0] p-6 rounded-sm border-2 border-[#8C5824] shadow-xl text-center max-w-sm space-y-2">
                   <div className="w-10 h-10 rounded-full bg-[#8C5824] text-white flex items-center justify-center mx-auto mb-2 shadow-sm">
                     <MapPin size={20} />
                   </div>
@@ -319,7 +373,7 @@ export default function ContactPage() {
                   href="https://maps.google.com/?q=59B+M%E1%BA%A1c+%C4%90%C4%A9nh+Chi,+T%C3%A2n+%C4%90%E1%BB%8Bnh,+Qu%E1%BA%ADn+1,+H%E1%BB%93+Ch%C3%AD+Minh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-white hover:bg-neutral-50 text-[#1A1A1A] border border-[#D5CEC2] hover:border-[#8C5824] px-7 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] shadow-sm transition-all group"
+                  className="inline-flex items-center gap-3 bg-[#EFEAE0] hover:bg-neutral-50 text-[#1A1A1A] border border-[#D5CEC2] hover:border-[#8C5824] px-7 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] shadow-sm transition-all group"
                 >
                   <span>CHỈ ĐƯỜNG BẰNG GOOGLE MAPS</span>
                   <ArrowRight
@@ -333,8 +387,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 04. ĐẶT LỊCH HẸN */}
-      <section className="py-20 border-b border-[#EAE5DD] bg-[#FBF9F5]" id="booking">
+      {/* ========================================================================= */}
+      {/* 04. ĐẶT LỊCH HẸN (MATCHING MOCKUP) */}
+      {/* ========================================================================= */}
+      <section className="py-20 border-b border-[#EAE5DD] bg-[#F6F2EA]" id="booking">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
             <span className="font-mono text-xs text-[#8C5824] font-bold">04</span>
@@ -344,7 +400,8 @@ export default function ContactPage() {
             <span className="h-px flex-1 bg-[#D5CEC2]" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            {/* Left: Text Description & Skeleton Tourbillon Image */}
             <div className="lg:col-span-5 space-y-6">
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light">
                 Để chúng tôi phục vụ bạn tốt hơn, vui lòng để lại thông tin để
@@ -361,9 +418,10 @@ export default function ContactPage() {
               </div>
             </div>
 
+            {/* Right: Booking Form (Matching Mockup with #EFEAE0 Warm Input Containers) */}
             <div className="lg:col-span-7">
               {formSubmitted ? (
-                <div className="bg-white border border-[#EAE5DD] p-10 rounded-sm text-center space-y-4 shadow-sm">
+                <div className="bg-[#EFEAE0] border border-[#EAE5DD] p-10 rounded-sm text-center space-y-4 shadow-sm">
                   <div className="w-14 h-14 rounded-full bg-[#F6F2EA] text-[#8C5824] flex items-center justify-center mx-auto">
                     <CheckCircle2 size={32} />
                   </div>
@@ -385,9 +443,10 @@ export default function ContactPage() {
               ) : (
                 <form
                   onSubmit={handleBookingSubmit}
-                  className="space-y-4 bg-white p-6 sm:p-8 rounded-sm border border-[#EAE5DD] shadow-xs"
+                  className="space-y-4"
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Họ và tên */}
                     <div>
                       <input
                         type="text"
@@ -397,9 +456,11 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, name: e.target.value })
                         }
-                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#FBF9F5] focus:bg-white focus:outline-none focus:border-[#8C5824] transition-colors"
+                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#EFEAE0] text-[#1A1A1A] placeholder:text-neutral-500 focus:outline-none focus:border-[#8C5824] transition-colors"
                       />
                     </div>
+
+                    {/* Số điện thoại */}
                     <div>
                       <input
                         type="tel"
@@ -409,23 +470,26 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#FBF9F5] focus:bg-white focus:outline-none focus:border-[#8C5824] transition-colors"
+                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#EFEAE0] text-[#1A1A1A] placeholder:text-neutral-500 focus:outline-none focus:border-[#8C5824] transition-colors"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Email */}
                     <div>
                       <input
                         type="email"
-                        placeholder="Email"
+                        placeholder="Email *"
                         value={formData.email}
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#FBF9F5] focus:bg-white focus:outline-none focus:border-[#8C5824] transition-colors"
+                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#EFEAE0] text-[#1A1A1A] placeholder:text-neutral-500 focus:outline-none focus:border-[#8C5824] transition-colors"
                       />
                     </div>
+
+                    {/* Chọn chi nhánh */}
                     <div>
                       <select
                         aria-label="Chọn chi nhánh"
@@ -433,8 +497,11 @@ export default function ContactPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, branch: e.target.value })
                         }
-                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#FBF9F5] focus:bg-white focus:outline-none focus:border-[#8C5824] transition-colors cursor-pointer"
+                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#EFEAE0] text-[#1A1A1A] focus:outline-none focus:border-[#8C5824] transition-colors cursor-pointer"
                       >
+                        <option value="59B Mạc Đĩnh Chi, Quận 1, TP. HCM">
+                          Chọn chi nhánh *
+                        </option>
                         <option value="59B Mạc Đĩnh Chi, Quận 1, TP. HCM">
                           59B Mạc Đĩnh Chi, Quận 1, TP. HCM
                         </option>
@@ -443,46 +510,47 @@ export default function ContactPage() {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <select
-                        aria-label="Thời gian mong muốn"
+                    {/* Thời gian mong muốn */}
+                    <div className="relative flex items-center">
+                      <input
+                        type="text"
+                        placeholder="Thời gian mong muốn"
                         value={formData.time}
                         onChange={(e) =>
                           setFormData({ ...formData, time: e.target.value })
                         }
-                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#FBF9F5] focus:bg-white focus:outline-none focus:border-[#8C5824] transition-colors cursor-pointer"
-                      >
-                        <option value="09:30">09:30</option>
-                        <option value="10:30">10:30</option>
-                        <option value="14:00">14:00</option>
-                        <option value="15:30">15:30</option>
-                        <option value="17:00">17:00</option>
-                        <option value="18:30">18:30</option>
-                      </select>
+                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#EFEAE0] text-[#1A1A1A] placeholder:text-neutral-500 focus:outline-none focus:border-[#8C5824] transition-colors pr-10"
+                      />
+                      <Calendar size={14} className="absolute right-3 text.neutral-400 pointer-events-none" />
                     </div>
 
-                    <div>
+                    {/* Ngày */}
+                    <div className="relative flex items-center">
                       <input
-                        type="date"
-                        aria-label="Chọn ngày hẹn"
+                        type="text"
+                        placeholder="Ngày"
+                        onFocus={(e) => (e.target.type = "date")}
+                        onBlur={(e) => (e.target.type = "text")}
                         value={formData.date}
                         onChange={(e) =>
                           setFormData({ ...formData, date: e.target.value })
                         }
-                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#FBF9F5] focus:bg-white focus:outline-none focus:border-[#8C5824] transition-colors cursor-pointer"
+                        className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#EFEAE0] text-[#1A1A1A] placeholder:text-neutral-500 focus:outline-none focus:border-[#8C5824] transition-colors pr-10 cursor-pointer"
                       />
+                      <Calendar size={14} className="absolute right-3 text-neutral-400 pointer-events-none" />
                     </div>
                   </div>
 
+                  {/* Nội dung / yêu cầu */}
                   <div>
                     <textarea
                       rows={4}
-                      placeholder="Nội dung / yêu cầu (Ví dụ: Muốn xem Rolex Yacht-Master hoặc Patek Philippe...)"
+                      placeholder="Nội dung / yêu cầu"
                       value={formData.note}
                       onChange={(e) =>
                         setFormData({ ...formData, note: e.target.value })
                       }
-                      className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#FBF9F5] focus:bg-white focus:outline-none focus:border-[#8C5824] transition-colors"
+                      className="w-full text-xs p-3.5 border border-[#EAE5DD] rounded-sm bg-[#EFEAE0] text-[#1A1A1A] placeholder:text-neutral-500 focus:outline-none focus:border-[#8C5824] transition-colors"
                     />
                   </div>
 
@@ -499,7 +567,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 05. KHÔNG GIAN SHOWROOM */}
+      {/* ========================================================================= */}
+      {/* 05. KHÔNG GIAN SHOWROOM (MATCHING MOCKUP) */}
+      {/* ========================================================================= */}
       <section className="py-20 border-b border-[#EAE5DD] bg-[#F6F2EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-10">
@@ -508,10 +578,10 @@ export default function ContactPage() {
               <h2 className="font-serif text-lg sm:text-xl uppercase tracking-[0.2em] text-[#1A1A1A] font-bold">
                 KHÔNG GIAN SHOWROOM
               </h2>
-              <span className="h-px flex-1 bg-[#D5CEC2] hidden sm:block" />
             </div>
 
-            <div className="flex items-center gap-2 pl-4">
+            {/* Slider Navigation Arrows in Header */}
+            <div className="flex items-center gap-2">
               <button
                 onClick={() =>
                   setActiveGalleryIndex((prev) =>
@@ -519,7 +589,7 @@ export default function ContactPage() {
                   )
                 }
                 aria-label="Xem ảnh trước"
-                className="w-8 h-8 rounded-sm border border-[#D5CEC2] bg-white hover:border-[#8C5824] flex items-center justify-center text-[#1A1A1A] transition-colors"
+                className="w-8 h-8 rounded-sm border border-[#D5CEC2] bg-[#EFEAE0] hover:border-[#8C5824] flex items-center justify-center text-[#1A1A1A] transition-colors"
               >
                 <ChevronLeft size={16} />
               </button>
@@ -530,32 +600,32 @@ export default function ContactPage() {
                   )
                 }
                 aria-label="Xem ảnh tiếp theo"
-                className="w-8 h-8 rounded-sm border border-[#D5CEC2] bg-white hover:border-[#8C5824] flex items-center justify-center text-[#1A1A1A] transition-colors"
+                className="w-8 h-8 rounded-sm border border-[#D5CEC2] bg-[#EFEAE0] hover:border-[#8C5824] flex items-center justify-center text-[#1A1A1A] transition-colors"
               >
                 <ChevronRight size={16} />
               </button>
             </div>
           </div>
 
+          {/* 5-Column Gallery Grid matching mockup */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {galleryItems.map((item, idx) => (
               <div
                 key={idx}
-                className={`bg-white p-3 rounded-sm border transition-all duration-300 group ${
-                  activeGalleryIndex === idx
-                    ? "border-[#8C5824] shadow-md ring-1 ring-[#8C5824]/20"
-                    : "border-[#EAE5DD] hover:border-[#8C5824]"
+                className={`flex flex-col group cursor-pointer ${
+                  activeGalleryIndex === idx ? "opacity-100" : "opacity-90 hover:opacity-100"
                 }`}
+                onClick={() => setActiveGalleryIndex(idx)}
               >
-                <div className="relative aspect-[4/3] w-full rounded-xs overflow-hidden mb-3">
+                <div className="relative aspect-[4/3] w-full rounded-xs overflow-hidden mb-2.5 border border-[#EAE5DD]">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <span className="block text-[10px] font-bold uppercase tracking-wider text-[#1A1A1A] text-center truncate">
+                <span className="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 text-center truncate">
                   {item.title}
                 </span>
               </div>
@@ -564,8 +634,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 06. CÂU HỎI THƯỜNG GẶP */}
-      <section className="py-20 border-b border-[#EAE5DD] bg-[#FBF9F5]">
+      {/* ========================================================================= */}
+      {/* 06. CÂU HỎI THƯỜNG GẶP (MATCHING MOCKUP) */}
+      {/* ========================================================================= */}
+      <section className="py-20 border-b border-[#EAE5DD] bg-[#F6F2EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
             <span className="font-mono text-xs text-[#8C5824] font-bold">06</span>
@@ -575,29 +647,30 @@ export default function ContactPage() {
             <span className="h-px flex-1 bg-[#D5CEC2]" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-3">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+            {/* Left: Accordion List (Warm Beige #EFEAE0 Boxes) */}
+            <div className="lg:col-span-7 space-y-3 flex flex-col justify-between">
               {faqs.map((faq, index) => {
                 const isOpen = openFaq === index;
                 return (
                   <div
                     key={index}
-                    className="border border-[#EAE5DD] rounded-sm bg-white overflow-hidden transition-all"
+                    className="border border-[#EAE5DD] rounded-sm bg-[#EFEAE0] overflow-hidden transition-all shadow-2xs"
                   >
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : index)}
-                      className="w-full p-4 sm:p-5 flex justify-between items-center text-left hover:bg-[#FBF9F5] transition-colors"
+                      className="w-full p-4 sm:p-5 flex justify-between items-center text-left hover:bg-[#EAE0D0] transition-colors"
                     >
-                      <span className="text-xs sm:text-[13px] font-semibold text-[#1A1A1A] pr-4">
+                      <span className="text-xs sm:text-[13px] font-medium text-[#1A1A1A] pr-4">
                         {faq.q}
                       </span>
-                      <span className="w-6 h-6 rounded-full border border-[#D5CEC2] flex items-center justify-center text-[#8C5824] flex-shrink-0">
-                        {isOpen ? <Minus size={13} /> : <Plus size={13} />}
+                      <span className="text-neutral-400 font-mono text-base flex-shrink-0">
+                        {isOpen ? <Minus size={14} /> : <Plus size={14} />}
                       </span>
                     </button>
 
                     {isOpen && (
-                      <div className="px-5 pb-5 pt-1 text-xs text-neutral-600 leading-relaxed border-t border-neutral-100 font-light">
+                      <div className="px-5 pb-5 pt-1 text-xs text-neutral-600 leading-relaxed border-t border-[#DCD3C5] font-light">
                         {faq.a}
                       </div>
                     )}
@@ -606,16 +679,17 @@ export default function ContactPage() {
               })}
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="relative aspect-[16/10] w-full rounded-sm overflow-hidden border border-[#EAE5DD] shadow-md group">
+            {/* Right: Watch Branding Card */}
+            <div className="lg:col-span-5 flex items-stretch">
+              <div className="relative aspect-[16/10] lg:aspect-auto w-full rounded-sm overflow-hidden border border-[#EAE5DD] shadow-md group min-h-[220px]">
                 <Image
                   src="/images/faq-watch.jpg"
                   alt="Kenny Luxury Prestigious Horology"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
-                  <span className="font-serif text-base tracking-[0.25em] text-white font-bold uppercase">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-end p-6">
+                  <span className="font-serif text-sm tracking-[0.25em] text-white font-bold uppercase">
                     KENNY LUXURY
                   </span>
                 </div>
@@ -625,10 +699,13 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 07. PRE-FOOTER BANNER */}
-      <section className="border-b border-[#EAE5DD] bg-gradient-to-r from-[#F6F2EA] via-[#FBF9F5] to-[#EDE7DC] py-12">
+      {/* ========================================================================= */}
+      {/* 07. PRE-FOOTER BANNER: WE LOOK FORWARD TO WELCOMING YOU */}
+      {/* ========================================================================= */}
+      <section className="border-b border-[#EAE5DD] bg-[#EDE7DC] py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Center / Left Typography */}
             <div>
               <h3 className="font-serif text-xl sm:text-2xl text-[#1A1A1A] tracking-wider uppercase font-normal">
                 WE LOOK FORWARD TO WELCOMING YOU
@@ -638,6 +715,7 @@ export default function ContactPage() {
               </p>
             </div>
 
+            {/* Right Action Buttons */}
             <div className="flex flex-wrap gap-4">
               <a
                 href="tel:0933336789"
@@ -647,7 +725,7 @@ export default function ContactPage() {
               </a>
               <a
                 href="#booking"
-                className="border border-[#D5CEC2] hover:border-[#8C5824] bg-white text-[#1A1A1A] px-7 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] transition-all"
+                className="border border-[#D5CEC2] hover:border-[#8C5824] bg-[#EFEAE0] text-[#1A1A1A] px-7 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] transition-all"
               >
                 ĐẶT LỊCH SHOWROOM
               </a>

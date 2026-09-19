@@ -10,7 +10,7 @@ export default function ConsultationBanner({
   brandName = "Rolex",
 }: ConsultationBannerProps) {
   return (
-    <section className="my-14 rounded-sm border border-[#EAE5DD] bg-gradient-to-r from-[#F6F2EA] via-[#FBF9F5] to-[#EDE7DC] p-8 md:p-12 text-center relative overflow-hidden shadow-sm">
+    <section className="my-14 rounded-sm border border-[#EAE5DD] bg-gradient-to-r from-[#F6F2EA] via-[#F6F2EA] to-[#EDE7DC] p-8 md:p-12 text-center relative overflow-hidden shadow-sm">
       <div className="max-w-2xl mx-auto space-y-4 relative z-10">
         <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8C5824]">
           DỊCH VỤ THƯỢNG KHÁCH 1:1

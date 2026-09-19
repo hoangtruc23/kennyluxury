@@ -50,7 +50,7 @@ export default function InstagramFeed() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative h-44 sm:h-52 rounded-sm overflow-hidden bg-white border border-[#EAE5DD]"
+            className="group relative h-44 sm:h-52 rounded-sm overflow-hidden bg-[#F6F2EA] border border-[#EAE5DD]"
           >
             <Image
               src={imgSrc}

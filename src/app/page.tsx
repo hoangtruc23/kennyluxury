@@ -11,7 +11,7 @@ import ExperienceBanner from "@/components/ExperienceBanner";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#FBF9F5] text-[#1A1A1A]">
+    <div className="min-h-screen bg-[#F6F2EA] text-[#1A1A1A]">
       {/* 01. Hero Banner */}
       <HomeHero />
 
