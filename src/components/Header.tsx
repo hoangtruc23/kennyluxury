@@ -113,7 +113,15 @@ export default function Header() {
                       ? "/danh-muc/audemars-piguet/code-11-59"
                       : b.slug === "richard-mille"
                         ? "/danh-muc/richard-mille/rm-011"
-                        : `/danh-muc/${b.slug}/yacht-master`;
+                        : b.slug === "hublot"
+                          ? "/danh-muc/hublot/big-bang"
+                          : b.slug === "patek-philippe"
+                            ? "/danh-muc/patek-philippe/nautilus"
+                            : b.slug === "cartier"
+                              ? "/danh-muc/cartier/santos"
+                              : b.slug === "franck-muller"
+                                ? "/danh-muc/franck-muller/vanguard-lady"
+                                : `/danh-muc/${b.slug}/yacht-master`;
                   return (
                     <Link
                       key={b.slug}
@@ -223,7 +231,15 @@ export default function Header() {
                     ? "/danh-muc/audemars-piguet/code-11-59"
                     : b.slug === "richard-mille"
                       ? "/danh-muc/richard-mille/rm-011"
-                      : `/danh-muc/${b.slug}/yacht-master`;
+                      : b.slug === "hublot"
+                        ? "/danh-muc/hublot/big-bang"
+                        : b.slug === "patek-philippe"
+                          ? "/danh-muc/patek-philippe/nautilus"
+                          : b.slug === "cartier"
+                            ? "/danh-muc/cartier/santos"
+                            : b.slug === "franck-muller"
+                              ? "/danh-muc/franck-muller/vanguard-lady"
+                              : `/danh-muc/${b.slug}/yacht-master`;
                 return (
                   <Link
                     key={b.slug}

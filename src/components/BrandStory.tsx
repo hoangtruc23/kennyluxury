@@ -10,12 +10,44 @@ interface BrandStoryProps {
   description?: string;
 }
 
+const BRAND_MOSAIC_IMAGES: Record<string, [string, string]> = {
+  "audemars-piguet": [
+    "https://theempire.vn/wp-content/uploads/2026/01/Audemars-Piguet-Code-11.59-By-Audermars-Piguet-Selfwinding-15210OR.OO_.A099CR.01.png",
+    "https://theempire.vn/wp-content/uploads/2024/11/Audemars-Piquet-Royal-Oak-Flying-Tourbillon-41mm-1.png",
+  ],
+  "richard-mille": [
+    "https://theempire.vn/wp-content/uploads/2024/12/Dong-Ho-Richard-Mille-RM-011-Felipe-Massa-Red-TPT-RM011.png",
+    "https://theempire.vn/wp-content/uploads/2024/12/Dong-Ho-Richard-Mille-RM-030-Rose-Gold-RM030.png",
+  ],
+  "hublot": [
+    "https://theempire.vn/wp-content/uploads/2024/12/Hublot-Big-Bang-Meca-10-King-Gold-45mm-414.OI_.1123.RX_-2.png",
+    "https://theempire.vn/wp-content/uploads/2025/03/Hublot-Classic-Fusion-Aerofusion-Chronograph-Orlinski-King-Gold-Pave-45mm-525.OX_.0180.RX_.1704.ORL19-1.png",
+  ],
+  "rolex": [
+    "/images/watches/Dong-Ho-Rolex-Yacht-Master-40-126622-0002-Mat-So-Xanh-1.png",
+    "/images/watches/Dong-Ho-Rolex-Yacht-Master-37-268622-0002-Mat-So-Rhodium-800x800.png",
+  ],
+  "patek-philippe": [
+    "https://theempire.vn/wp-content/uploads/2026/01/Dong-ho-Patek-Philippe-Ladies-Nautilus-Rose-Gold-35.2mm-7118-1450R-001-Mat-So-Kim-Cuong-.png",
+    "https://theempire.vn/wp-content/uploads/2026/01/Patek-Philippe-Aquanaut-42.2mm-5168G-001-Mat-So-Xanh-.png",
+  ],
+  "cartier": [
+    "https://empireluxury.vn/wp-content/uploads/2023/12/dong-ho-cartier-santos-de-cartier-chronograph-43-3mm-crwssa0017-1.png",
+    "https://empireluxury.vn/wp-content/uploads/2026/07/dong-ho-cartier-tank-americaine-rose-gold-silver-dial-15-2mm-wjta0057-4.png",
+  ],
+  "franck-muller": [
+    "https://empireluxury.vn/wp-content/uploads/2022/04/dong-ho-franck-muller-crazy-hours-v-32-ch-d-5n-nr-2-1.jpg",
+    "https://empireluxury.vn/wp-content/uploads/2022/04/dong-ho-franck-muller-vanguard-v-41-cc-dt-yachting-ac-bl-7.jpg",
+  ],
+};
+
 export default function BrandStory({
   brandName,
   brandSlug,
   tagline = "Biểu tượng của sự sáng tạo và tinh tế vượt thời gian.",
   description = "Thành lập với sứ mệnh định hình chuẩn mực đỉnh cao của ngành chế tác vi cơ khí, mỗi cỗ máy thời gian là sự kết tinh hoàn mỹ giữa nghệ thuật kim hoàn, di sản truyền đời và độ chính xác tuyệt đối.",
 }: BrandStoryProps) {
+  const mosaic = BRAND_MOSAIC_IMAGES[brandSlug] || BRAND_MOSAIC_IMAGES["rolex"];
   return (
     <section className="py-10 border-b border-[#EAE5DD]">
       {/* Breadcrumb */}
@@ -93,8 +125,8 @@ export default function BrandStory({
           <div className="relative h-32 sm:h-40 rounded-sm overflow-hidden bg-white border border-[#EAE5DD] flex items-center justify-center p-4">
             <div className="relative w-full h-full">
               <Image
-                src="/images/watches/Dong-Ho-Rolex-Yacht-Master-40-126622-0002-Mat-So-Xanh-1.png"
-                alt="Watch Dial"
+                src={mosaic[0]}
+                alt={`${brandName} Macro`}
                 fill
                 className="object-contain"
               />
@@ -105,8 +137,8 @@ export default function BrandStory({
           <div className="relative h-32 sm:h-40 rounded-sm overflow-hidden bg-white border border-[#EAE5DD] flex items-center justify-center p-4">
             <div className="relative w-full h-full">
               <Image
-                src="/images/watches/Dong-Ho-Rolex-Yacht-Master-37-268622-0002-Mat-So-Rhodium-800x800.png"
-                alt="Movement Detail"
+                src={mosaic[1]}
+                alt={`${brandName} Movement`}
                 fill
                 className="object-contain"
               />

@@ -14,7 +14,7 @@ export default function ShopByBrand() {
     {
       name: "PATEK PHILIPPE",
       logo: "/images/brands/patek-philippe.png",
-      href: "/danh-muc/patek-philippe/yacht-master",
+      href: "/danh-muc/patek-philippe/nautilus",
     },
     {
       name: "AUDEMARS PIGUET",
@@ -29,12 +29,12 @@ export default function ShopByBrand() {
     {
       name: "Cartier",
       logo: "/images/brands/cartier.png",
-      href: "/danh-muc/rolex/yacht-master",
+      href: "/danh-muc/cartier/santos",
     },
     {
       name: "HUBLOT",
       logo: "/images/brands/hublot.png",
-      href: "/danh-muc/hublot/yacht-master",
+      href: "/danh-muc/hublot/big-bang",
     },
     {
       name: "VACHERON CONSTANTIN",
@@ -44,7 +44,7 @@ export default function ShopByBrand() {
     {
       name: "FRANCK MULLER",
       logo: "/images/brands/franck-muller.png",
-      href: "/danh-muc/rolex/yacht-master",
+      href: "/danh-muc/franck-muller/vanguard-lady",
     },
   ];
 

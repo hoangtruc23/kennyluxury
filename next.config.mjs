@@ -13,6 +13,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'empireluxury.vn',
+      },
+      {
+        protocol: 'https',
         hostname: 'kennyluxury.vn',
       },
     ],

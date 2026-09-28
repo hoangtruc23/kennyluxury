@@ -19,6 +19,22 @@ export default function BrandPage({ params }: BrandPageProps) {
     redirect("/danh-muc/richard-mille/rm-011");
   }
 
+  if (brandSlug === "hublot") {
+    redirect("/danh-muc/hublot/big-bang");
+  }
+
+  if (brandSlug === "patek-philippe") {
+    redirect("/danh-muc/patek-philippe/nautilus");
+  }
+
+  if (brandSlug === "cartier") {
+    redirect("/danh-muc/cartier/santos");
+  }
+
+  if (brandSlug === "franck-muller") {
+    redirect("/danh-muc/franck-muller/vanguard-lady");
+  }
+
   // Default to yacht-master for Rolex and other brands
   redirect(`/danh-muc/${brandSlug}/yacht-master`);
 }

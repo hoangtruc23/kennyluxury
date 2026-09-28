@@ -7,6 +7,7 @@ interface FilterSidebarProps {
   filters: FilterState;
   onFilterChange: (newFilters: FilterState) => void;
   availableCollections: { name: string; slug: string; count: number }[];
+  availableSizes?: string[];
   brandName?: string;
   totalBrandProducts?: number;
 }
@@ -15,6 +16,7 @@ export default function FilterSidebar({
   filters,
   onFilterChange,
   availableCollections,
+  availableSizes = ["37 mm", "40 mm", "42 mm", "44 mm"],
   brandName = "Rolex",
   totalBrandProducts = 32,
 }: FilterSidebarProps) {
@@ -136,7 +138,7 @@ export default function FilterSidebar({
           Kích Thước Vỏ
         </h3>
         <div className="grid grid-cols-2 gap-2">
-          {["37 mm", "40 mm", "42 mm", "44 mm"].map((size) => {
+          {availableSizes.map((size) => {
             const isSelected = filters.caseSizes.includes(size);
             return (
               <button
@@ -145,7 +147,7 @@ export default function FilterSidebar({
                 onClick={() => handleSizeToggle(size)}
                 className={`py-2 px-3 text-xs border transition-all text-center rounded-sm font-medium ${isSelected
                   ? "border-[#8C5824] bg-[#8C5824] text-white"
-                  : "border-[#EAE5DD] bg-white text-[#1A1A1A] hover:border-[#8C5824]"
+                  : "border-[#EAE5DD] bg-[#F6F2EA] text-[#1A1A1A] hover:border-[#8C5824] hover:bg-[#EFEBE4]"
                   }`}
               >
                 {size}

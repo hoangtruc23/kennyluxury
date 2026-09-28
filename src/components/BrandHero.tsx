@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { toSlug } from "@/lib/utils";
 
 interface BrandHeroProps {
   brandName?: string;
+  brandSlug?: string;
   title?: string;
   subtitle?: string;
   description?: string;
@@ -11,22 +13,41 @@ interface BrandHeroProps {
   videoUrl?: string;
 }
 
+const BRAND_VIDEOS: Record<string, string> = {
+  "audemars-piguet": "/videos/Piguet.mp4",
+  "richard-mille": "/videos/mille.mp4",
+  "rolex": "/videos/rolex.mp4",
+  "hublot": "/videos/hublot.mp4",
+  "patek-philippe": "/videos/patek-philippe.mp4",
+  "cartier": "/videos/cartier.mp4",
+  "franck-muller": "/videos/classic-watches.mp4",
+  "vacheron-constantin": "/videos/classic-watches.mp4",
+};
+
 export default function BrandHero({
   brandName = "ROLEX",
+  brandSlug,
   title,
   subtitle = "Timeless Elegance.",
   description = "Biểu tượng của sự thanh lịch vượt thời gian và tinh thần sáng tạo đỉnh cao.",
   heroImage = "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226659-0002-Mat-So-Den-800x800.png",
   videoUrl,
 }: BrandHeroProps) {
-  // If videoUrl is provided, render cinematic 80vh video hero
-  if (videoUrl) {
+  const slug = toSlug(brandSlug || brandName || "");
+  const effectiveVideoUrl =
+    videoUrl !== undefined
+      ? videoUrl
+      : (BRAND_VIDEOS[slug] || "/videos/classic-watches.mp4");
+
+  // If effectiveVideoUrl is provided, render cinematic 80vh video hero (identical to Audemars Piguet)
+  if (effectiveVideoUrl) {
     const displayTitle = title || (brandName ? `ĐỒNG HỒ ${brandName.toUpperCase()}` : "ĐỒNG HỒ CAO CẤP");
 
     return (
       <section className="-mt-20 relative w-full h-[80vh] min-h-[560px] max-h-[880px] overflow-hidden flex items-end bg-black border-b border-neutral-900">
         {/* Background Video */}
         <video
+          key={effectiveVideoUrl}
           className="absolute inset-0 w-full h-full object-cover object-center"
           autoPlay
           loop
@@ -34,7 +55,7 @@ export default function BrandHero({
           playsInline
           preload="auto"
         >
-          <source src={videoUrl} type="video/mp4" />
+          <source src={effectiveVideoUrl} type="video/mp4" />
           Trình duyệt của bạn không hỗ trợ video.
         </video>
 
