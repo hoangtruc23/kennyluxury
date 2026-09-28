@@ -130,96 +130,6 @@ export default function FilterSidebar({
         </div>
       </div>
 
-      {/* 3. KHOẢNG GIÁ */}
-      <div className="space-y-3 pb-5 border-b border-[#EAE5DD]">
-        <h3 className="text-xs font-bold tracking-wider uppercase text-[#1A1A1A]">
-          Khoảng Giá
-        </h3>
-        <div className="space-y-2 text-xs">
-          {[
-            { label: "Tất cả mức giá", range: [0, 500000000000] as [number, number] },
-            { label: "Dưới 500 triệu", range: [0, 500000000] as [number, number] },
-            {
-              label: "500 triệu - 1 tỷ",
-              range: [500000000, 1000000000] as [number, number],
-            },
-            {
-              label: "Trên 1 tỷ",
-              range: [1000000000, 500000000000] as [number, number],
-            },
-          ].map((tier, idx) => {
-            const isChecked =
-              filters.priceRange[0] === tier.range[0] &&
-              filters.priceRange[1] === tier.range[1];
-            return (
-              <label
-                key={idx}
-                className="flex items-center gap-2.5 cursor-pointer select-none hover:text-[#8C5824] transition-colors"
-              >
-                <input
-                  type="radio"
-                  name="priceFilter"
-                  checked={isChecked}
-                  onChange={() => handlePriceSelect(tier.range)}
-                  className="w-3.5 h-3.5 text-[#8C5824] focus:ring-0 cursor-pointer accent-[#8C5824]"
-                />
-                <span
-                  className={
-                    isChecked ? "text-[#8C5824] font-semibold" : "text-[#1A1A1A]"
-                  }
-                >
-                  {tier.label}
-                </span>
-              </label>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* 4. TÌNH TRẠNG KHO */}
-      <div className="space-y-3 pb-5 border-b border-[#EAE5DD]">
-        <h3 className="text-xs font-bold tracking-wider uppercase text-[#1A1A1A]">
-          Tình Trạng Kho
-        </h3>
-        <div className="space-y-2.5 text-xs">
-          <label className="flex items-center gap-2.5 cursor-pointer select-none hover:text-[#8C5824] transition-colors">
-            <input
-              type="checkbox"
-              checked={filters.stockStatuses.includes("in_stock")}
-              onChange={() => handleStockToggle("in_stock")}
-              className="w-3.5 h-3.5 rounded border-[#D5CEC2] text-[#8C5824] focus:ring-0 cursor-pointer accent-[#8C5824]"
-            />
-            <span
-              className={
-                filters.stockStatuses.includes("in_stock")
-                  ? "text-[#8C5824] font-semibold"
-                  : "text-[#1A1A1A]"
-              }
-            >
-              Có sẵn giao ngay
-            </span>
-          </label>
-
-          <label className="flex items-center gap-2.5 cursor-pointer select-none hover:text-[#8C5824] transition-colors">
-            <input
-              type="checkbox"
-              checked={filters.stockStatuses.includes("pre_order")}
-              onChange={() => handleStockToggle("pre_order")}
-              className="w-3.5 h-3.5 rounded border-[#D5CEC2] text-[#8C5824] focus:ring-0 cursor-pointer accent-[#8C5824]"
-            />
-            <span
-              className={
-                filters.stockStatuses.includes("pre_order")
-                  ? "text-[#8C5824] font-semibold"
-                  : "text-[#1A1A1A]"
-              }
-            >
-              Đặt hàng theo yêu cầu
-            </span>
-          </label>
-        </div>
-      </div>
-
       {/* 5. KÍCH THƯỚC VỎ */}
       <div className="space-y-3">
         <h3 className="text-xs font-bold tracking-wider uppercase text-[#1A1A1A]">
@@ -233,11 +143,10 @@ export default function FilterSidebar({
                 key={size}
                 type="button"
                 onClick={() => handleSizeToggle(size)}
-                className={`py-2 px-3 text-xs border transition-all text-center rounded-sm font-medium ${
-                  isSelected
-                    ? "border-[#8C5824] bg-[#8C5824] text-white"
-                    : "border-[#EAE5DD] bg-white text-[#1A1A1A] hover:border-[#8C5824]"
-                }`}
+                className={`py-2 px-3 text-xs border transition-all text-center rounded-sm font-medium ${isSelected
+                  ? "border-[#8C5824] bg-[#8C5824] text-white"
+                  : "border-[#EAE5DD] bg-white text-[#1A1A1A] hover:border-[#8C5824]"
+                  }`}
               >
                 {size}
               </button>

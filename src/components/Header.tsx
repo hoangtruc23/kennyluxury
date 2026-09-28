@@ -13,54 +13,24 @@ export default function Header() {
   const [brandDropdownOpen, setBrandDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Check if current page features a dark video hero banner
-  const isDarkHeroPage =
-    pathname?.includes("/audemars-piguet") ||
-    pathname?.startsWith("/danh-muc/audemars-piguet");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 60) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const isHome = pathname === "/";
   const isBrandPage = pathname === "/thuong-hieu";
   const isServices = pathname === "/dich-vu";
   const isJournal = pathname === "/journal";
   const isContact = pathname === "/lien-he";
   const isProducts = pathname?.startsWith("/danh-muc") || pathname?.startsWith("/san-pham");
-  const isTransparent = isDarkHeroPage && !scrolled && !mobileMenuOpen;
 
   const navLinkClass = (isActive = false) => {
     if (isActive) {
-      return isTransparent
-        ? "text-white font-bold border-b-2 border-white drop-shadow-sm py-2"
-        : "text-[#8C5824] font-bold border-b-2 border-[#8C5824] py-2";
+      return "text-[#8C5824] font-bold border-b-2 border-[#8C5824] py-2";
     }
-    return isTransparent
-      ? "text-white/90 hover:text-[#D4AF37] drop-shadow-sm transition-colors py-2"
-      : "text-[#1A1A1A] hover:text-[#8C5824] transition-colors py-2";
+    return "text-[#1A1A1A] hover:text-[#8C5824] transition-colors py-2";
   };
 
-  const iconClass = isTransparent
-    ? "text-white hover:text-[#D4AF37] drop-shadow-sm transition-colors p-1"
-    : "text-[#1A1A1A] hover:text-[#8C5824] transition-colors p-1";
+  const iconClass = "text-[#1A1A1A] hover:text-[#8C5824] transition-colors p-1";
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${isTransparent
-        ? "bg-transparent border-b border-transparent shadow-none"
-        : "bg-[#F6F2EA]/95 backdrop-blur-md border-b border-[#EAE5DD]/80 shadow-xs"
-        }`}
-    >
+    <header className="sticky top-0 z-50 transition-all duration-300 bg-[#F6F2EA]/95 backdrop-blur-md border-b border-[#EAE5DD]/80 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Left: Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
@@ -79,16 +49,10 @@ export default function Header() {
             />
           </div>
           <div className="flex flex-col">
-            <span
-              className={`font-serif text-lg tracking-[0.25em] font-bold uppercase leading-none transition-colors ${isTransparent ? "text-white drop-shadow-sm" : "text-[#1A1A1A]"
-                }`}
-            >
+            <span className="font-serif text-lg tracking-[0.25em] font-bold uppercase leading-none text-[#1A1A1A] transition-colors">
               KENNY
             </span>
-            <span
-              className={`font-serif text-[10px] tracking-[0.35em] uppercase mt-0.5 font-medium leading-none transition-colors ${isTransparent ? "text-[#D4AF37] drop-shadow-xs" : "text-[#8C5824]"
-                }`}
-            >
+            <span className="font-serif text-[10px] tracking-[0.35em] uppercase mt-0.5 font-medium leading-none text-[#8C5824] transition-colors">
               LUXURY
             </span>
           </div>
@@ -99,12 +63,11 @@ export default function Header() {
           {/* TRANG CHỦ */}
           <Link
             href="/"
-            className={`py-1.5 transition-colors ${isHome
-              ? isTransparent
-                ? "px-4 rounded-full bg-white/20 text-white font-bold backdrop-blur-xs"
-                : "px-4 rounded-full bg-[#EAE2D5] text-[#1A1A1A] font-bold shadow-xs"
-              : navLinkClass(false)
-              }`}
+            className={`py-1.5 transition-colors ${
+              isHome
+                ? "px-4 rounded-full bg-[#EAE2D5] text-[#1A1A1A] font-bold shadow-xs"
+                : navLinkClass(false)
+            }`}
           >
             Trang Chủ
           </Link>
@@ -126,11 +89,7 @@ export default function Header() {
             <button
               className={`flex items-center gap-1.5 py-2 transition-colors ${
                 isProducts
-                  ? isTransparent
-                    ? "text-white font-bold border-b-2 border-white drop-shadow-sm"
-                    : "text-[#8C5824] font-bold border-b-2 border-[#8C5824]"
-                  : isTransparent
-                  ? "text-white/90 hover:text-[#D4AF37] drop-shadow-sm"
+                  ? "text-[#8C5824] font-bold border-b-2 border-[#8C5824]"
                   : "text-[#1A1A1A] hover:text-[#8C5824]"
               }`}
             >
@@ -139,7 +98,7 @@ export default function Header() {
                 size={13}
                 className={`transition-transform duration-200 ${
                   brandDropdownOpen ? "rotate-180" : ""
-                } ${isTransparent ? "text-white/80" : "text-neutral-500"}`}
+                } text-neutral-500`}
               />
             </button>
 

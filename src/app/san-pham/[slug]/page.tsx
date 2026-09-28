@@ -5,7 +5,16 @@ import { notFound } from "next/navigation";
 import { PRODUCTS } from "@/lib/data";
 import { formatPrice, toSlug } from "@/lib/utils";
 import ProductGrid from "@/components/ProductGrid";
-import { Phone, MessageCircle, ShieldCheck, Clock, Award, ChevronRight } from "lucide-react";
+import {
+  Phone,
+  MessageCircle,
+  ShieldCheck,
+  Clock,
+  Award,
+  ChevronRight,
+  ClipboardCheck,
+  Settings,
+} from "lucide-react";
 
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({
@@ -35,6 +44,17 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
   const brandSlug = toSlug(product.brand);
   const collectionSlug = toSlug(product.collection);
+
+  const specItems = [
+    { label: "Kích thước vỏ:", value: product.specs?.caseSize },
+    { label: "Chất liệu vỏ:", value: product.specs?.caseMaterial },
+    { label: "Vành Bezel:", value: product.specs?.bezel },
+    { label: "Mặt số:", value: product.specs?.dialColor },
+    { label: "Bộ máy cơ:", value: product.specs?.movement },
+    { label: "Dây đeo:", value: product.specs?.braceletMaterial },
+    { label: "Khả năng chống nước:", value: product.specs?.waterResistance },
+    { label: "Tình trạng:", value: product.specs?.condition, isHighlight: true },
+  ].filter((item) => Boolean(item.value));
 
   return (
     <div className="min-h-screen bg-[#F6F2EA] text-[#1A1A1A] py-8 sm:py-12">
@@ -67,7 +87,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         {/* Product Hero Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: Image Showcase */}
-          <div className="relative aspect-square w-full bg-white border border-[#EAE5DD] rounded-sm overflow-hidden flex items-center justify-center p-8 sm:p-12 shadow-xs">
+          <div className="relative aspect-square w-full bg-[#F6F2EA] border border-[#EAE5DD] rounded-sm overflow-hidden flex items-center justify-center p-8 sm:p-12 shadow-xs">
             <div className="relative w-full h-full max-w-md max-h-md">
               <Image
                 src={product.images[0]}
@@ -105,7 +125,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                   Liên hệ
                 </span>
               </div>
-              <div>
+              {/* <div>
                 <span
                   className={`text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold border ${
                     product.stockStatus === "in_stock"
@@ -115,7 +135,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 >
                   {product.stockStatus === "in_stock" ? "Có sẵn tại showroom" : "Đặt hàng"}
                 </span>
-              </div>
+              </div> */}
             </div>
 
             {/* Description */}
@@ -137,7 +157,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
               <a
                 href="tel:0906222222"
-                className="w-full flex items-center justify-center gap-2 bg-white hover:bg-neutral-50 text-[#1A1A1A] border border-[#8C5824] font-semibold uppercase tracking-wider py-4 rounded-sm transition-colors text-xs"
+                className="w-full flex items-center justify-center gap-2 bg-[#F6F2EA] hover:bg-[#EFEBE4] text-[#1A1A1A] border border-[#8C5824] font-semibold uppercase tracking-wider py-4 rounded-sm transition-colors text-xs"
               >
                 <Phone size={18} className="text-[#8C5824]" />
                 <span>Hotline: 0906 222 222 (24/7)</span>
@@ -163,76 +183,120 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         </div>
 
         {/* Specifications Table */}
+        {specItems.length > 0 && (
+          <div className="mt-16 sm:mt-24 pt-10 border-t border-[#EAE5DD]">
+            <h2 className="font-serif text-2xl text-[#1A1A1A] font-bold mb-6 uppercase tracking-wider">
+              Thông Số Kỹ Thuật Chi Tiết
+            </h2>
+            <div className="border border-[#EAE5DD] rounded-sm overflow-hidden bg-transparent">
+              <div className="divide-y divide-[#EAE5DD] text-xs sm:text-sm">
+                {specItems.map((spec, index) => (
+                  <div
+                    key={spec.label}
+                    className={`grid grid-cols-1 md:grid-cols-3 p-4 ${
+                      index % 2 === 0 ? "bg-[#F6F2EA]" : "bg-[#EFEBE4]"
+                    } hover:bg-[#ECE5D8] transition-colors`}
+                  >
+                    <span className="text-neutral-500 font-medium">{spec.label}</span>
+                    <span
+                      className={`md:col-span-2 font-medium ${
+                        spec.isHighlight
+                          ? "text-[#8C5824] font-semibold"
+                          : "text-[#1A1A1A]"
+                      }`}
+                    >
+                      {spec.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Warranty Policy Section */}
         <div className="mt-16 sm:mt-24 pt-10 border-t border-[#EAE5DD]">
-          <h2 className="font-serif text-2xl text-[#1A1A1A] font-bold mb-6 uppercase tracking-wider">
-            Thông Số Kỹ Thuật Chi Tiết
-          </h2>
-          <div className="border border-[#EAE5DD] rounded-sm overflow-hidden bg-white shadow-xs">
-            <div className="divide-y divide-[#EAE5DD] text-xs sm:text-sm">
-              {product.specs.caseSize && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-white">
-                  <span className="text-neutral-500 font-medium">Kích thước vỏ:</span>
-                  <span className="md:col-span-2 text-[#1A1A1A] font-medium">
-                    {product.specs.caseSize}
-                  </span>
-                </div>
-              )}
-              {product.specs.caseMaterial && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#F6F2EA]">
-                  <span className="text-neutral-500 font-medium">Chất liệu vỏ:</span>
-                  <span className="md:col-span-2 text-[#1A1A1A] font-medium">
-                    {product.specs.caseMaterial}
-                  </span>
-                </div>
-              )}
-              {product.specs.bezel && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-white">
-                  <span className="text-neutral-500 font-medium">Vành Bezel:</span>
-                  <span className="md:col-span-2 text-[#1A1A1A] font-medium">
-                    {product.specs.bezel}
-                  </span>
-                </div>
-              )}
-              {product.specs.dialColor && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#F6F2EA]">
-                  <span className="text-neutral-500 font-medium">Mặt số:</span>
-                  <span className="md:col-span-2 text-[#1A1A1A] font-medium">
-                    {product.specs.dialColor}
-                  </span>
-                </div>
-              )}
-              {product.specs.movement && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-white">
-                  <span className="text-neutral-500 font-medium">Bộ máy cơ:</span>
-                  <span className="md:col-span-2 text-[#1A1A1A] font-medium">
-                    {product.specs.movement}
-                  </span>
-                </div>
-              )}
-              {product.specs.braceletMaterial && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#F6F2EA]">
-                  <span className="text-neutral-500 font-medium">Dây đeo:</span>
-                  <span className="md:col-span-2 text-[#1A1A1A] font-medium">
-                    {product.specs.braceletMaterial}
-                  </span>
-                </div>
-              )}
-              {product.specs.waterResistance && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-white">
-                  <span className="text-neutral-500 font-medium">Khả năng chống nước:</span>
-                  <span className="md:col-span-2 text-[#1A1A1A] font-medium">
-                    {product.specs.waterResistance}
-                  </span>
-                </div>
-              )}
-              {product.specs.condition && (
-                <div className="grid grid-cols-1 md:grid-cols-3 p-4 bg-[#F6F2EA]">
-                  <span className="text-neutral-500 font-medium">Tình trạng:</span>
-                  <span className="md:col-span-2 text-[#8C5824] font-semibold">
-                    {product.specs.condition}
-                  </span>
-                </div>
-              )}
+          <div className="flex items-center gap-2.5 mb-8">
+            <span className="text-xs font-mono font-bold text-[#8C5824]">03</span>
+            <span className="text-[#D5CEC2]">|</span>
+            <h2 className="font-serif text-lg sm:text-xl text-[#1A1A1A] font-bold uppercase tracking-wider">
+              CHÍNH SÁCH BẢO HÀNH
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-[#EAE5DD] py-2">
+            {/* Column 1: THỜI GIAN BẢO HÀNH */}
+            <div className="lg:pr-6 space-y-3">
+              <div className="flex items-center gap-2.5">
+                <ShieldCheck size={24} className="text-[#8C5824] shrink-0" strokeWidth={1.5} />
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1A1A1A]">
+                  THỜI GIAN BẢO HÀNH
+                </h3>
+              </div>
+              <p className="text-xs sm:text-[13px] text-neutral-600 leading-relaxed">
+                Tất cả đồng hồ tại Kenny Luxury đều được bảo hành chính hãng từ 3 – 5 năm tùy theo tình trạng đồng hồ khi mua.
+              </p>
+            </div>
+
+            {/* Column 2: ĐIỀU KIỆN BẢO HÀNH */}
+            <div className="lg:px-6 space-y-3">
+              <div className="flex items-center gap-2.5">
+                <ClipboardCheck size={24} className="text-[#8C5824] shrink-0" strokeWidth={1.5} />
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1A1A1A]">
+                  ĐIỀU KIỆN BẢO HÀNH
+                </h3>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-[13px] text-neutral-600 leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#8C5824] leading-tight font-bold">•</span>
+                  <span>Bảo hành miễn phí cho các lỗi kỹ thuật do nhà sản xuất.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#8C5824] leading-tight font-bold">•</span>
+                  <span>Không áp dụng cho các hư hỏng do tác động từ bên ngoài như va đập, rơi vỡ, vào nước, hoặc can thiệp từ bên thứ ba.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: QUY TRÌNH BẢO HÀNH */}
+            <div className="lg:px-6 space-y-3">
+              <div className="flex items-center gap-2.5">
+                <Settings size={24} className="text-[#8C5824] shrink-0" strokeWidth={1.5} />
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1A1A1A]">
+                  QUY TRÌNH BẢO HÀNH
+                </h3>
+              </div>
+              <ul className="space-y-2 text-xs sm:text-[13px] text-neutral-600 leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#8C5824] leading-tight font-bold">•</span>
+                  <span>Liên hệ Kenny Luxury để được tư vấn hướng dẫn.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#8C5824] leading-tight font-bold">•</span>
+                  <span>Kiểm tra và xác nhận tình trạng đồng hồ.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#8C5824] leading-tight font-bold">•</span>
+                  <span>Sửa chữa và bảo dưỡng bởi đội ngũ kỹ thuật viên chuyên nghiệp.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#8C5824] leading-tight font-bold">•</span>
+                  <span>Bàn giao đồng hồ sau khi hoàn tất bảo hành.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4: CAM KẾT */}
+            <div className="lg:pl-6 space-y-3">
+              <div className="flex items-center gap-2.5">
+                <Award size={24} className="text-[#8C5824] shrink-0" strokeWidth={1.5} />
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1A1A1A]">
+                  CAM KẾT
+                </h3>
+              </div>
+              <p className="text-xs sm:text-[13px] text-neutral-600 leading-relaxed">
+                Kenny Luxury cam kết mang đến dịch vụ hậu mãi tận tâm, giữ gìn giá trị và vẻ đẹp bền lâu của chiếc đồng hồ bạn sở hữu.
+              </p>
             </div>
           </div>
         </div>

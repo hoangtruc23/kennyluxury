@@ -75,10 +75,10 @@ export default function SubCollectionsRow({
               href={`/danh-muc/${brandSlug}/${item.slug}`}
               scroll={false}
               onClick={handleScrollToCollections}
-              className={`group block p-4 bg-white border transition-all duration-300 rounded-sm text-center ${
+              className={`group block p-4 bg-[#F6F2EA] hover:bg-[#EFEBE4] border transition-all duration-300 rounded-sm text-center ${
                 isActive
-                  ? "border-[#8C5824] ring-1 ring-[#8C5824]/30 shadow-sm"
-                  : "border-[#EAE5DD] hover:border-[#D5CEC2] hover:shadow-sm"
+                  ? "border-[#8C5824] ring-1 ring-[#8C5824]/30"
+                  : "border-[#EAE5DD] hover:border-[#D5CEC2]"
               }`}
             >
               {/* Watch Thumbnail */}
