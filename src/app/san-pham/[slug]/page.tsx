@@ -87,13 +87,13 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         {/* Product Hero Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: Image Showcase */}
-          <div className="relative aspect-square w-full bg-[#F6F2EA] border border-[#EAE5DD] rounded-sm overflow-hidden flex items-center justify-center p-8 sm:p-12 shadow-xs">
+          <div className="relative aspect-square w-full bg-[#F6F2EA] border border-[#EAE5DD] rounded-sm overflow-hidden flex items-center justify-center p-8 sm:p-12 shadow-xs isolate">
             <div className="relative w-full h-full max-w-md max-h-md">
               <Image
                 src={product.images[0]}
                 alt={product.name}
                 fill
-                className="object-contain hover:scale-105 transition-transform duration-500"
+                className="object-contain mix-blend-multiply hover:scale-105 transition-transform duration-500"
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
@@ -193,17 +193,15 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 {specItems.map((spec, index) => (
                   <div
                     key={spec.label}
-                    className={`grid grid-cols-1 md:grid-cols-3 p-4 ${
-                      index % 2 === 0 ? "bg-[#F6F2EA]" : "bg-[#EFEBE4]"
-                    } hover:bg-[#ECE5D8] transition-colors`}
+                    className={`grid grid-cols-1 md:grid-cols-3 p-4 ${index % 2 === 0 ? "bg-[#F6F2EA]" : "bg-[#EFEBE4]"
+                      } hover:bg-[#ECE5D8] transition-colors`}
                   >
                     <span className="text-neutral-500 font-medium">{spec.label}</span>
                     <span
-                      className={`md:col-span-2 font-medium ${
-                        spec.isHighlight
+                      className={`md:col-span-2 font-medium ${spec.isHighlight
                           ? "text-[#8C5824] font-semibold"
                           : "text-[#1A1A1A]"
-                      }`}
+                        }`}
                     >
                       {spec.value}
                     </span>

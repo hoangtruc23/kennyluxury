@@ -8,6 +8,9 @@ interface BrandStoryProps {
   brandSlug: string;
   tagline?: string;
   description?: string;
+  badge1?: string;
+  badge2?: string;
+  badge3?: string;
 }
 
 const BRAND_MOSAIC_IMAGES: Record<string, [string, string]> = {
@@ -41,13 +44,59 @@ const BRAND_MOSAIC_IMAGES: Record<string, [string, string]> = {
   ],
 };
 
+const BRAND_FEATURE_BADGES: Record<string, { badge1: string; badge2: string; badge3: string }> = {
+  "rolex": {
+    badge1: "Di sản hơn 119 năm chế tác Thụy Sĩ",
+    badge2: "Chuẩn mực chính xác Superlative Chronometer",
+    badge3: "Vật liệu độc quyền Oystersteel & Vàng 18ct",
+  },
+  "audemars-piguet": {
+    badge1: "Di sản hơn 148 năm tinh hoa chế tác",
+    badge2: "Biểu tượng Royal Oak & Code 11.59 kinh điển",
+    badge3: "Kỹ thuật Haute Horlogerie & hoàn thiện thủ công",
+  },
+  "patek-philippe": {
+    badge1: "Di sản hơn 185 năm nghệ thuật truyền đời",
+    badge2: "Đỉnh cao Complications & Nautilus huyền thoại",
+    badge3: "Bảo chứng con dấu Patek Philippe Seal cao quý",
+  },
+  "richard-mille": {
+    badge1: "Đột phá công nghệ vật liệu đường đua F1",
+    badge2: "Cấu trúc Tonneau siêu nhẹ & chống va đập",
+    badge3: "Cỗ máy vi cơ khí đỉnh cao dành cho thế kỷ 21",
+  },
+  "hublot": {
+    badge1: "Triết lý Art of Fusion kết hợp táo bạo",
+    badge2: "Thiết kế Big Bang & Classic Fusion cá tính",
+    badge3: "Chất liệu độc quyền King Gold & Ceramic cao cấp",
+  },
+  "cartier": {
+    badge1: "Di sản hơn 177 năm kim hoàn & thời gian",
+    badge2: "Tuyệt tác Santos & Tank thanh lịch vượt thời gian",
+    badge3: "Nghệ thuật tạo hình hình học chuẩn mực Paris",
+  },
+  "franck-muller": {
+    badge1: "Danh hiệu Master of Complications lừng danh",
+    badge2: "Dáng vỏ Vanguard & Crazy Hours độc bản",
+    badge3: "Sáng tạo vi cơ khí không giới hạn từ Geneva",
+  },
+};
+
 export default function BrandStory({
   brandName,
   brandSlug,
   tagline = "Biểu tượng của sự sáng tạo và tinh tế vượt thời gian.",
   description = "Thành lập với sứ mệnh định hình chuẩn mực đỉnh cao của ngành chế tác vi cơ khí, mỗi cỗ máy thời gian là sự kết tinh hoàn mỹ giữa nghệ thuật kim hoàn, di sản truyền đời và độ chính xác tuyệt đối.",
+  badge1,
+  badge2,
+  badge3,
 }: BrandStoryProps) {
-  const mosaic = BRAND_MOSAIC_IMAGES[brandSlug] || BRAND_MOSAIC_IMAGES["rolex"];
+  const mosaic = BRAND_MOSAIC_IMAGES[brandSlug?.toLowerCase()] || BRAND_MOSAIC_IMAGES["rolex"];
+  const defaultBadges = BRAND_FEATURE_BADGES[brandSlug?.toLowerCase()] || BRAND_FEATURE_BADGES["rolex"];
+  const text1 = badge1 || defaultBadges.badge1;
+  const text2 = badge2 || defaultBadges.badge2;
+  const text3 = badge3 || defaultBadges.badge3;
+
   return (
     <section className="py-10 border-b border-[#EAE5DD]">
       {/* Breadcrumb */}
@@ -89,19 +138,19 @@ export default function BrandStory({
             <div className="flex flex-col items-center space-y-1.5">
               <Sparkles size={20} className="text-[#8C5824]" />
               <span className="text-[11px] text-neutral-700 font-medium leading-snug">
-                Thiết kế đậm chất thương hiệu
+                {text1}
               </span>
             </div>
             <div className="flex flex-col items-center space-y-1.5">
               <ShieldCheck size={20} className="text-[#8C5824]" />
               <span className="text-[11px] text-neutral-700 font-medium leading-snug">
-                Di sản chế tác đỉnh cao
+                {text2}
               </span>
             </div>
             <div className="flex flex-col items-center space-y-1.5">
               <Award size={20} className="text-[#8C5824]" />
               <span className="text-[11px] text-neutral-700 font-medium leading-snug">
-                Tinh tế trong từng chi tiết
+                {text3}
               </span>
             </div>
           </div>
@@ -122,25 +171,25 @@ export default function BrandStory({
           </div>
 
           {/* Bottom left tile: Dial Macro */}
-          <div className="relative h-32 sm:h-40 rounded-sm overflow-hidden bg-white border border-[#EAE5DD] flex items-center justify-center p-4">
+          <div className="relative h-32 sm:h-40 rounded-sm overflow-hidden bg-[#F6F2EA] border border-[#EAE5DD] flex items-center justify-center p-4 isolate">
             <div className="relative w-full h-full">
               <Image
                 src={mosaic[0]}
                 alt={`${brandName} Macro`}
                 fill
-                className="object-contain"
+                className="object-contain mix-blend-multiply"
               />
             </div>
           </div>
 
           {/* Bottom right tile: Movement Detail */}
-          <div className="relative h-32 sm:h-40 rounded-sm overflow-hidden bg-white border border-[#EAE5DD] flex items-center justify-center p-4">
+          <div className="relative h-32 sm:h-40 rounded-sm overflow-hidden bg-[#F6F2EA] border border-[#EAE5DD] flex items-center justify-center p-4 isolate">
             <div className="relative w-full h-full">
               <Image
                 src={mosaic[1]}
                 alt={`${brandName} Movement`}
                 fill
-                className="object-contain"
+                className="object-contain mix-blend-multiply"
               />
             </div>
           </div>

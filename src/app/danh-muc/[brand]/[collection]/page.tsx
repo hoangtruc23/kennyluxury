@@ -42,6 +42,7 @@ export default function CollectionPage() {
   }
 
   if (!brandSlug) brandSlug = "rolex";
+  const isRolex = toSlug(brandSlug) === "rolex";
   const isAP = toSlug(brandSlug) === "audemars-piguet";
   const isRM = toSlug(brandSlug) === "richard-mille";
   const isHublot = toSlug(brandSlug) === "hublot";
@@ -72,12 +73,12 @@ export default function CollectionPage() {
       : isHublot
         ? "big-bang"
         : isPatek
-          ? "nautilus"
+          ? "aquanaut"
           : isCartier
             ? "santos"
             : isFM
               ? "vanguard-lady"
-              : "yacht-master";
+              : "lady-datejust";
   let effectiveCollSlug = toSlug(collectionSlug || defaultCollSlug);
   if (effectiveCollSlug === "rm-sport") {
     effectiveCollSlug = "rm-sport-lifestyle";
@@ -157,6 +158,13 @@ export default function CollectionPage() {
     caseSizes: [],
   });
 
+  const activeCollSlug = useMemo(() => {
+    if (filters.collections.length === 1) {
+      return toSlug(filters.collections[0]);
+    }
+    return effectiveCollSlug;
+  }, [filters.collections, effectiveCollSlug]);
+
   // Keep collection filter in sync when navigating between sub-collections
   React.useEffect(() => {
     if (effectiveCollSlug) {
@@ -209,13 +217,13 @@ export default function CollectionPage() {
           name: "CODE 11.59",
           slug: "code-11-59",
           image:
-            "https://theempire.vn/wp-content/uploads/2026/01/Audemars-Piguet-Code-11.59-By-Audermars-Piguet-Selfwinding-15210OR.OO_.A099CR.01.png",
+            "/images/watches/ap-code-1159.png",
         },
         {
           name: "ROYAL OAK",
           slug: "royal-oak",
           image:
-            "https://theempire.vn/wp-content/uploads/2024/11/Audemars-Piquet-Royal-Oak-Flying-Tourbillon-41mm-1.png",
+            "/images/watches/ap-royal-oak.png",
         },
         {
           name: "ROYAL OAK CONCEPT",
@@ -227,7 +235,7 @@ export default function CollectionPage() {
           name: "ROYAL OAK OFFSHORE",
           slug: "royal-oak-offshore",
           image:
-            "https://theempire.vn/wp-content/uploads/2024/12/100.png",
+            "/images/watches/ap-royal-oak-offshore.png",
         },
       ];
     }
@@ -243,24 +251,18 @@ export default function CollectionPage() {
           name: "CLASSIC FUSION",
           slug: "classic-fusion",
           image:
-            "https://theempire.vn/wp-content/uploads/2025/03/Hublot-Classic-Fusion-Aerofusion-Chronograph-Orlinski-King-Gold-Pave-45mm-525.OX_.0180.RX_.1704.ORL19-1.png",
+            "/images/watches/hublot-classic-fusion.png",
         },
         {
           name: "SPIRIT OF BIG BANG",
           slug: "spirit-of-big-bang",
           image:
-            "https://theempire.vn/wp-content/uploads/2025/01/Hublot-Spirit-Of-Big-Bang-Meca-10-King-Gold-45mm-614.OX_.1180.RX_.png",
+            "/images/watches/hublot-spirit-of-big-bang.png",
         },
       ];
     }
     if (isPatek) {
       return [
-        {
-          name: "NAUTILUS",
-          slug: "nautilus",
-          image:
-            "https://theempire.vn/wp-content/uploads/2026/01/Dong-ho-Patek-Philippe-Ladies-Nautilus-Rose-Gold-35.2mm-7118-1450R-001-Mat-So-Kim-Cuong-.png",
-        },
         {
           name: "AQUANAUT",
           slug: "aquanaut",
@@ -268,10 +270,22 @@ export default function CollectionPage() {
             "https://theempire.vn/wp-content/uploads/2026/01/Patek-Philippe-Aquanaut-42.2mm-5168G-001-Mat-So-Xanh-.png",
         },
         {
+          name: "NAUTILUS",
+          slug: "nautilus",
+          image:
+            "/images/watches/patek-nautilus.png",
+        },
+        {
           name: "COMPLICATIONS",
           slug: "complications",
           image:
-            "https://theempire.vn/wp-content/uploads/2024/12/Dong-Ho-Patek-Philippe-Annual-Calendar-Complications-4947G-001-Mat-So-Xanh-38mm.png",
+            "/images/watches/patek-complications.png",
+        },
+        {
+          name: "GRAND COMPLICATIONS",
+          slug: "grand-complications",
+          image:
+            "https://theempire.vn/wp-content/uploads/2026/05/Patek-Philippe-Grand-Complications-6105G-001.png",
         },
         {
           name: "CALATRAVA",
@@ -284,12 +298,6 @@ export default function CollectionPage() {
           slug: "twenty-4",
           image:
             "https://theempire.vn/wp-content/uploads/2025/01/Dong-Ho-Patek-Philippe-Twenty-4-4910-1200A-001-30mm.png",
-        },
-        {
-          name: "GRAND COMPLICATIONS",
-          slug: "grand-complications",
-          image:
-            "https://theempire.vn/wp-content/uploads/2026/05/Patek-Philippe-Grand-Complications-5204G-010.png",
         },
         {
           name: "GOLDEN ELLIPSE",
@@ -305,19 +313,19 @@ export default function CollectionPage() {
           name: "SANTOS DE CARTIER",
           slug: "santos",
           image:
-            "https://empireluxury.vn/wp-content/uploads/2023/12/dong-ho-cartier-santos-de-cartier-chronograph-43-3mm-crwssa0017-1.png",
+            "/images/watches/cartier-santos-blue.png",
         },
         {
           name: "TANK",
           slug: "tank",
           image:
-            "https://empireluxury.vn/wp-content/uploads/2026/07/dong-ho-cartier-tank-americaine-rose-gold-silver-dial-15-2mm-wjta0057-4.png",
+            "/images/watches/cartier-tank-leather.png",
         },
         {
           name: "PANTHÈRE DE CARTIER",
           slug: "panthere",
           image:
-            "https://empireluxury.vn/wp-content/uploads/2026/07/dong-ho-cartier-la-panthere-de-cartier-white-gold-black-dial-15-2mm-hpi01741-3.png",
+            "/images/watches/cartier-panthere-steel.png",
         },
         {
           name: "BAIGNOIRE",
@@ -393,43 +401,55 @@ export default function CollectionPage() {
     }
     return [
       {
-        name: "YACHT-MASTER",
-        slug: "yacht-master",
+        name: "LADY-DATEJUST",
+        slug: "lady-datejust",
         image:
-          "/images/watches/Dong-Ho-Rolex-Yacht-Master-40-126622-0002-Mat-So-Xanh-1.png",
-      },
-      {
-        name: "SUBMARINER",
-        slug: "submariner",
-        image:
-          "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226659-0002-Mat-So-Den-800x800.png",
-      },
-      {
-        name: "DAYTONA",
-        slug: "daytona",
-        image:
-          "/images/watches/Dong-Ho-Rolex-Yacht-Master-40-126621-0001-Mat-So-Nau-Chocolate-800x800.png",
+          "/images/watches/rolex-lady-datejust.png",
       },
       {
         name: "DATEJUST",
         slug: "datejust",
         image:
-          "/images/watches/Dong-Ho-Rolex-Yacht-Master-37-268622-0002-Mat-So-Rhodium-800x800.png",
+          "/images/watches/rolex-datejust.png",
+      },
+      {
+        name: "DAY-DATE",
+        slug: "day-date",
+        image:
+          "/images/watches/rolex-day-date.png",
+      },
+      {
+        name: "COSMOGRAPH DAYTONA",
+        slug: "daytona",
+        image:
+          "https://theempire.vn/wp-content/uploads/2025/12/Dong-Ho-Rolex-Cosmograph-Daytona-40-1165000LN-0002-Mat-So-Den-Day-Oyster-Thep.png",
       },
       {
         name: "GMT-MASTER II",
         slug: "gmt-master-ii",
         image:
-          "/images/watches/Dong-Ho-Rolex-Yacht-Master-40-126655-0002-Mat-So-Den-800x800.png",
+          "https://theempire.vn/wp-content/uploads/2025/12/Dong-Ho-Rolex-GMT-Master-II-40-126710BLNR-Batman-Mat-So-Den.png",
       },
       {
-        name: "OYSTER PERPETUAL",
-        slug: "oyster-perpetual",
+        name: "YACHT-MASTER",
+        slug: "yacht-master",
         image:
-          "/images/watches/Dong-Ho-Rolex-Yacht-Master-42-226658-0001-Mat-So-Den-800x800.png",
+          "https://theempire.vn/wp-content/uploads/2025/12/Dong-Ho-Rolex-Yacht-Master-40-126622-0002-Mat-So-Xanh-1.png",
+      },
+      {
+        name: "SKY-DWELLER",
+        slug: "sky-dweller",
+        image:
+          "https://theempire.vn/wp-content/uploads/2026/01/Dong-Ho-Sky-Dweller-42mm-336934-0007-Mat-So-Den-.png",
+      },
+      {
+        name: "LAND-DWELLER",
+        slug: "land-dweller",
+        image:
+          "https://theempire.vn/wp-content/uploads/2026/01/Rolex-Land-Dweller-36-127285TBR-0002-Mat-So-Trang-.png",
       },
     ];
-  }, [isAP, isRM, isHublot, isPatek, isCartier, isFM]);
+  }, [isAP, isRM, isHublot, isPatek, isCartier, isFM, isRolex]);
 
   // Dynamic collections for the current brand
   const availableCollections = useMemo(() => {
@@ -482,33 +502,14 @@ export default function CollectionPage() {
 
   // Dynamic case sizes for the current brand
   const availableSizes = useMemo(() => {
-    const brandProducts = PRODUCTS.filter(
-      (p) => toSlug(p.brand) === toSlug(brandSlug)
-    );
-    const sizeMap = new Map<string, number>();
-    brandProducts.forEach((p) => {
-      const s = p.specs?.caseSize?.trim();
-      if (s) {
-        const m = s.match(/^(\d{2})\s*mm$/i);
-        const norm = m ? `${m[1]} mm` : s;
-        sizeMap.set(norm, (sizeMap.get(norm) || 0) + 1);
-      }
-    });
-
-    if (sizeMap.size > 0) {
-      return Array.from(sizeMap.entries())
-        .filter(([_, count]) => count >= 2)
-        .sort((a, b) => {
-          const numA = parseInt(a[0], 10) || 0;
-          const numB = parseInt(b[0], 10) || 0;
-          return numA - numB;
-        })
-        .slice(0, 8)
-        .map(([size]) => size);
+    if (isRolex) {
+      if (activeCollSlug === "datejust") return ["31 mm", "36 mm", "41 mm"];
+      if (activeCollSlug === "day-date") return ["36 mm", "40 mm"];
+      if (activeCollSlug === "yacht-master") return ["37 mm", "40 mm", "42 mm"];
+      if (activeCollSlug === "land-dweller") return ["36 mm", "40 mm"];
     }
-
-    return ["37 mm", "40 mm", "42 mm", "44 mm"];
-  }, [brandSlug]);
+    return [];
+  }, [isRolex, activeCollSlug]);
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
@@ -633,6 +634,25 @@ export default function CollectionPage() {
         return false;
       }
 
+      // Filter by case sizes (from sidebar)
+      if (filters.caseSizes && filters.caseSizes.length > 0) {
+        const matchSize = filters.caseSizes.some((selectedSize) => {
+          const num = selectedSize.replace(/[^0-9]/g, "");
+          const cs = (product.specs?.caseSize || "").toLowerCase();
+          const name = (product.name || "").toLowerCase();
+          return (
+            cs.includes(num + "mm") ||
+            cs.includes(num + " mm") ||
+            cs === num ||
+            name.includes(num + "mm") ||
+            name.includes(num + " mm") ||
+            name.includes("-" + num + "-") ||
+            name.includes(" " + num + " ")
+          );
+        });
+        if (!matchSize) return false;
+      }
+
       return true;
     });
 
@@ -688,34 +708,38 @@ export default function CollectionPage() {
         brandSlug={brand.slug}
         title={brand.name.toUpperCase()}
         subtitle={
-          isRM
-            ? "A Racing Machine On The Wrist"
+          isRolex
+            ? "The Crown of Achievement."
             : isAP
-              ? "Haute Horlogerie Since 1875"
-              : isHublot
-                ? "The Art of Fusion"
-                : isPatek
-                  ? "Generations of Excellence Since 1839"
-                  : isCartier
-                    ? "The Jeweller of Kings and the King of Jewellers"
-                    : isFM
-                      ? "Master of Complications"
-                      : "Timeless Elegance."
+              ? "The Art of Contemporary Haute Horlogerie."
+              : isRM
+                ? "A RACING MACHINE FOR THE WRIST."
+                : isHublot
+                  ? "The Art of Fusion."
+                  : isPatek
+                    ? "Generations of Excellence Since 1839."
+                    : isCartier
+                      ? "Timeless Elegance."
+                      : isFM
+                        ? "Master of Complications."
+                        : "Timeless Elegance."
         }
         description={
-          isAP
-            ? "Đồng hồ Audemars Piguet gây ấn tượng không chỉ bởi thiết kế táo bạo và đột phá, mà còn bởi chất liệu và kỹ thuật vượt trội trong từng chi tiết. Từ mô-đun đến chuyển động cơ học, mọi yếu tố đều được các kỹ sư cơ khí vi mô hàng đầu chế tác tỉ mỉ qua hàng nghìn giờ lao động thủ công."
-            : isRM
-              ? "Đỉnh cao đột phá vi cơ khí từ Les Breuleux, Thụy Sĩ. Tiên phong ứng dụng vật liệu hàng không vũ trụ và xe đua F1 vào những cỗ máy thời gian triệu đô."
-              : isHublot
-                ? "Khẳng định vị thế tiên phong với triết lý 'The Art of Fusion' – sự hòa quyện đỉnh cao giữa truyền thống chế tác Haute Horlogerie Thụy Sĩ và các vật liệu tương lai độc quyền như Magic Gold, King Gold và Ceramic màu sắc."
-                : isPatek
-                  ? "Đỉnh cao chế tác Haute Horlogerie Thụy Sĩ từ năm 1839. 'Bạn chưa bao giờ thực sự sở hữu một chiếc Patek Philippe, bạn chỉ đơn thuần gìn giữ nó cho thế hệ mai sau.'"
-                  : isCartier
-                    ? "Khởi nguồn từ Paris năm 1847, Cartier được Vua Edward VII của Anh tôn vinh là 'Nhà kim hoàn của các vị vua và Vua của các nhà kim hoàn'. Mỗi tạo tác đồng hồ Cartier là sự thăng hoa trọn vẹn giữa tư duy hình học tiên phong, di sản nghệ thuật kim hoàn đỉnh cao và sự thanh lịch kiểu Pháp bất hủ."
-                    : isFM
-                      ? "Được mệnh danh là 'Bậc thầy của những cỗ máy cơ học siêu phức tạp', Franck Muller chinh phục giới mộ điệu toàn cầu bằng thiết kế dáng cong Tonneau Curvex huyền thoại, cọc số sắc màu biến ảo và tinh hoa chế tác độc bản tại Watchland, Geneva."
-                      : "Biểu tượng của sự chính xác đỉnh cao, đẳng cấp thượng lưu và giá trị trường tồn qua các thế hệ kiệt tác thời gian Thụy Sĩ."
+          isRolex
+            ? "Khám phá những cỗ máy thời gian biểu tượng được tuyển chọn bởi Kenny Luxury."
+            : isAP
+              ? "Những cỗ máy thời gian biểu tượng của nghệ thuật chế tác hiện đại."
+              : isRM
+                ? "Những cỗ máy thời gian mang tinh thần công nghệ, hiệu suất và kỹ thuật đỉnh cao."
+                : isHublot
+                  ? 'Nổi danh với những thiết kế phá vỡ giới hạn cùng triết lý "The Art of Fusion", Hublot kiến tạo nên những cỗ máy thời gian độc bản cho thế hệ đương đại.'
+                  : isPatek
+                    ? "Những cỗ máy thời gian được tạo nên để truyền từ thế hệ này sang thế hệ khác."
+                    : isCartier
+                      ? "Biểu tượng của sự thanh lịch vượt thời gian và tinh thần sáng tạo đỉnh cao."
+                      : isFM
+                        ? "Những cỗ máy thời gian độc bản, nơi nghệ thuật chế tác hòa quyện cùng sự sáng tạo không giới hạn."
+                        : "Biểu tượng của sự chính xác đỉnh cao, đẳng cấp thượng lưu và giá trị trường tồn qua các thế hệ kiệt tác thời gian Thụy Sĩ."
         }
         heroImage={
           isRM
@@ -740,30 +764,38 @@ export default function CollectionPage() {
           brandName={brand.name}
           brandSlug={brand.slug}
           tagline={
-            isRM
-              ? "Kỷ nguyên của những cỗ máy thời gian siêu nhẹ và siêu bền bỉ."
-              : isHublot
-                ? "Triết lý 'The Art of Fusion' định hình tương lai đồng hồ xa xỉ."
-                : isPatek
-                  ? "Di sản truyền đời và chuẩn mực tối thượng của Haute Horlogerie."
-                  : isCartier
-                    ? "Đỉnh cao kim hoàn Paris và những kiệt tác hình học bất hủ."
-                    : isFM
-                      ? "Bậc thầy của những cỗ máy cơ học siêu phức tạp và nghệ thuật kim hoàn Geneva."
-                      : "Biểu tượng của sự sáng tạo và tinh tế vượt thời gian."
+            isRolex
+              ? "Biểu tượng của sự chính xác và giá trị trường tồn."
+              : isAP
+                ? "Biểu tượng của sự táo bạo và đổi mới."
+                : isRM
+                  ? "Biểu tượng của hiệu suất và công nghệ."
+                  : isHublot
+                    ? "Biểu tượng của sự kết hợp táo bạo và khác biệt."
+                    : isPatek
+                      ? "Biểu tượng của nghệ thuật chế tác và giá trị truyền đời."
+                      : isCartier
+                        ? "Biểu tượng của sự sáng tạo và tinh tế vượt thời gian."
+                        : isFM
+                          ? "Biểu tượng của sự sáng tạo và tinh tế vượt thời gian."
+                          : "Biểu tượng của sự sáng tạo và tinh tế vượt thời gian."
           }
           description={
-            isRM
-              ? "Richard Mille định hình lại hoàn toàn khái niệm về đồng hồ xa xỉ với triết lý kết hợp giữa công nghệ đua xe Công thức 1 và kỹ nghệ đồng hồ Haute Horlogerie đỉnh cao. Mỗi siêu phẩm chế tác từ Carbon TPT, Titanium cấp độ 5 và Sapphire nguyên khối."
-              : isHublot
-                ? "Hublot là biểu tượng tiên phong của thế giới đồng hồ thế kỷ 21 với triết lý The Art of Fusion – kết hợp táo bạo giữa truyền thống chế tác Haute Horlogerie Thụy Sĩ cùng những vật liệu đột phá như Magic Gold, King Gold và Sapphire nguyên khối."
-                : isPatek
-                  ? "Patek Philippe là xưởng chế tác đồng hồ độc lập lâu đời cuối cùng tại Geneva, được mệnh danh là 'Vua của thế giới đồng hồ'. Mỗi cỗ máy thời gian là một kiệt tác vô giá kết tinh từ kỹ nghệ thủ công bậc thầy, con dấu Patek Philippe Seal khắt khe và giá trị gia truyền qua nhiều thế hệ."
-                  : isCartier
-                    ? "Cartier là biểu tượng vĩ đại của nghệ thuật kim hoàn và chế tác đồng hồ xa xỉ nước Pháp từ năm 1847. Tiên phong sáng tạo nên chiếc đồng hồ đeo tay hiện đại đầu tiên trên thế giới (Santos) cùng những hình dáng vỏ kinh điển như Tank, Panthère hay Crash, Cartier đã và đang định hình phong cách sống vương giả của giới quý tộc và giới mộ điệu toàn cầu."
-                    : isFM
-                      ? "Thành lập tại Genthod, Geneva bởi nghệ nhân thiên tài Franck Muller và chuyên gia kim hoàn Vartan Sirmakes, Franck Muller đã làm nên cuộc cách mạng trong ngành chế tác đồng hồ thế giới. Sở hữu những phát minh chấn động như Crazy Hours, Aeternitas Mega và thiết kế vỏ Cintrée Curvex độc nhất vô nhị, mỗi tác phẩm là sự giao hòa tuyệt mỹ giữa nghệ thuật thị giác đương đại và kỹ nghệ Haute Horlogerie Thụy Sĩ."
-                      : "Rolex là chuẩn mực tối thượng của sự hoàn mỹ và độ bền bỉ trong chế tác đồng hồ Thụy Sĩ. Mỗi cỗ máy Oyster Perpetual hay Professional đều được tạo tác với độ chính xác cơ học tuyệt đỉnh cùng vật liệu Oystersteel, Rolesor và vàng 18 ct độc quyền."
+            isRolex
+              ? "Từ năm 1905, Rolex không ngừng viết nên những chương mới trong hành trình sáng tạo, với sứ mệnh mang đến những mẫu đồng hồ xuất sắc nhất, là sự kết hợp hoàn hảo giữa công nghệ vượt trội và vẻ đẹp vượt thời gian."
+              : isAP
+                ? "Từ năm 1875, Audemars Piguet luôn tiên phong trong tinh thần sáng tạo, kết hợp giữa kỹ thuật phức tạp và thiết kế khác biệt để tạo nên những kiệt tác dành cho thế hệ đam mê đồng hồ đương đại."
+                : isRM
+                  ? "Richard Mille kết hợp vật liệu tiên tiến, kiến trúc cơ khí và thiết kế đột phá để tạo nên những cỗ máy thời gian dành cho những người luôn vượt giới hạn."
+                  : isHublot
+                    ? "Kể từ năm 1980, Hublot luôn đi tiên phong trong việc kết hợp những vật liệu trái ngược để tạo nên sự hài hòa hoàn hảo. Mỗi chiếc đồng hồ Hublot là một tuyên ngôn của cá tính và tinh thần tiên phong."
+                    : isPatek
+                      ? "Được thành lập từ năm 1839, Patek Philippe luôn tiên phong trong việc tạo ra những cỗ máy thời gian phức tạp nhất, kết hợp hoàn hảo giữa kỹ thuật chế tác thủ công và vẻ đẹp tinh tế."
+                      : isCartier
+                        ? "Từ năm 1847 tại Paris, Cartier đã trở thành biểu tượng của sự thanh lịch, sáng tạo và nghệ thuật chế tác đỉnh cao. Mỗi chiếc đồng hồ Cartier là sự hòa quyện giữa tinh thần nghệ thuật và giá trị di sản vượt thời gian."
+                        : isFM
+                          ? "Từ năm 1991, Franck Muller đã tạo nên những tuyệt tác với thiết kế tonneau độc trung, bộ máy cơ học tinh xảo và những chức năng phức tạp mang dấu ấn riêng biệt."
+                          : "Rolex là chuẩn mực tối thượng của sự hoàn mỹ và độ bền bỉ trong chế tác đồng hồ Thụy Sĩ. Mỗi cỗ máy Oyster Perpetual hay Professional đều được tạo tác với độ chính xác cơ học tuyệt đỉnh cùng vật liệu Oystersteel, Rolesor và vàng 18 ct độc quyền."
           }
         />
 
@@ -813,6 +845,7 @@ export default function CollectionPage() {
 
             {/* Product Grid Area */}
             <div className="flex-1 min-w-0">
+
               {/* Desktop Result Counter & Sort */}
               <div className="hidden lg:flex justify-between items-center mb-6 pb-3 border-b border-[#EAE5DD]">
                 <span className="text-xs text-neutral-500 uppercase tracking-wider">
@@ -821,9 +854,9 @@ export default function CollectionPage() {
                     {filteredProducts.length === 0
                       ? 0
                       : `${(currentPage - 1) * ITEMS_PER_PAGE + 1} - ${Math.min(
-                          currentPage * ITEMS_PER_PAGE,
-                          filteredProducts.length
-                        )}`}
+                        currentPage * ITEMS_PER_PAGE,
+                        filteredProducts.length
+                      )}`}
                   </strong>{" "}
                   trên tổng số{" "}
                   <strong className="text-[#1A1A1A]">
@@ -885,7 +918,6 @@ export default function CollectionPage() {
                 filters={filters}
                 onFilterChange={setFilters}
                 availableCollections={availableCollections}
-                availableSizes={availableSizes}
                 brandName={brand.name}
                 totalBrandProducts={brand.count}
               />

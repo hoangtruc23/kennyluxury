@@ -149,11 +149,11 @@ export default function Footer() {
             <ul className="space-y-2 text-[11px]">
               <li className="flex items-start gap-2">
                 <MapPin size={14} className="text-[#8C5824] flex-shrink-0 mt-0.5" />
-                <span>59B Mạc Đĩnh Chi, P. Tân Định, Quận 1, TP. Hồ Chí Minh</span>
+                <span>59B Mạc Đĩnh Chi, P. Tân Định, TP. Hồ Chí Minh</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={14} className="text-[#8C5824] flex-shrink-0" />
-                <span className="text-[#1A1A1A] font-semibold">09 3333 6789 / 0906 222 222</span>
+                <span className="text-[#1A1A1A] font-semibold">0906 222 222</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-[#8C5824] flex-shrink-0" />

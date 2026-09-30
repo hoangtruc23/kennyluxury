@@ -63,11 +63,10 @@ export default function Header() {
           {/* TRANG CHỦ */}
           <Link
             href="/"
-            className={`py-1.5 transition-colors ${
-              isHome
-                ? "px-4 rounded-full bg-[#EAE2D5] text-[#1A1A1A] font-bold shadow-xs"
-                : navLinkClass(false)
-            }`}
+            className={`py-1.5 transition-colors ${isHome
+              ? "px-4 rounded-full bg-[#EAE2D5] text-[#1A1A1A] font-bold shadow-xs"
+              : navLinkClass(false)
+              }`}
           >
             Trang Chủ
           </Link>
@@ -87,18 +86,16 @@ export default function Header() {
             onMouseLeave={() => setBrandDropdownOpen(false)}
           >
             <button
-              className={`flex items-center gap-1.5 py-2 transition-colors ${
-                isProducts
-                  ? "text-[#8C5824] font-bold border-b-2 border-[#8C5824]"
-                  : "text-[#1A1A1A] hover:text-[#8C5824]"
-              }`}
+              className={`flex items-center gap-1.5 py-2 transition-colors ${isProducts
+                ? "text-[#8C5824] font-bold border-b-2 border-[#8C5824]"
+                : "text-[#1A1A1A] hover:text-[#8C5824]"
+                }`}
             >
-              <span>Sản Phẩm</span>
+              <span>SẢN PHẨM</span>
               <ChevronDown
                 size={13}
-                className={`transition-transform duration-200 ${
-                  brandDropdownOpen ? "rotate-180" : ""
-                } text-neutral-500`}
+                className={`transition-transform duration-200 ${brandDropdownOpen ? "rotate-180" : ""
+                  } text-neutral-500`}
               />
             </button>
 

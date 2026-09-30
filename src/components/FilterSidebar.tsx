@@ -16,7 +16,7 @@ export default function FilterSidebar({
   filters,
   onFilterChange,
   availableCollections,
-  availableSizes = ["37 mm", "40 mm", "42 mm", "44 mm"],
+  availableSizes,
   brandName = "Rolex",
   totalBrandProducts = 32,
 }: FilterSidebarProps) {
@@ -26,29 +26,16 @@ export default function FilterSidebar({
       ? filters.collections.filter((c) => c !== slug)
       : [...filters.collections, slug];
 
-    onFilterChange({ ...filters, collections: newCollections });
-  };
-
-  const handleStockToggle = (status: string) => {
-    const isSelected = filters.stockStatuses.includes(status);
-    const newStatuses = isSelected
-      ? filters.stockStatuses.filter((s) => s !== status)
-      : [...filters.stockStatuses, status];
-
-    onFilterChange({ ...filters, stockStatuses: newStatuses });
+    onFilterChange({ ...filters, collections: newCollections, caseSizes: [] });
   };
 
   const handleSizeToggle = (size: string) => {
     const isSelected = filters.caseSizes.includes(size);
-    const newSizes = isSelected
+    const newCaseSizes = isSelected
       ? filters.caseSizes.filter((s) => s !== size)
       : [...filters.caseSizes, size];
 
-    onFilterChange({ ...filters, caseSizes: newSizes });
-  };
-
-  const handlePriceSelect = (range: [number, number]) => {
-    onFilterChange({ ...filters, priceRange: range });
+    onFilterChange({ ...filters, caseSizes: newCaseSizes });
   };
 
   const hasActiveFilters =
@@ -77,7 +64,7 @@ export default function FilterSidebar({
         {hasActiveFilters && (
           <button
             onClick={handleResetFilters}
-            className="text-[11px] text-[#8C5824] hover:underline uppercase tracking-wider font-semibold"
+            className="text-[11px] text-[#8C5824] hover:underline uppercase tracking-wider font-semibold cursor-pointer"
           >
             Xóa tất cả
           </button>
@@ -132,30 +119,41 @@ export default function FilterSidebar({
         </div>
       </div>
 
-      {/* 5. KÍCH THƯỚC VỎ */}
-      <div className="space-y-3">
-        <h3 className="text-xs font-bold tracking-wider uppercase text-[#1A1A1A]">
-          Kích Thước Vỏ
-        </h3>
-        <div className="grid grid-cols-2 gap-2">
-          {availableSizes.map((size) => {
-            const isSelected = filters.caseSizes.includes(size);
-            return (
-              <button
-                key={size}
-                type="button"
-                onClick={() => handleSizeToggle(size)}
-                className={`py-2 px-3 text-xs border transition-all text-center rounded-sm font-medium ${isSelected
-                  ? "border-[#8C5824] bg-[#8C5824] text-white"
-                  : "border-[#EAE5DD] bg-[#F6F2EA] text-[#1A1A1A] hover:border-[#8C5824] hover:bg-[#EFEBE4]"
-                  }`}
-              >
-                {size}
-              </button>
-            );
-          })}
+      {/* 3. KÍCH THƯỚC VỎ (Under DÒNG SẢN PHẨM) */}
+      {availableSizes && availableSizes.length > 0 && (
+        <div className="space-y-3 pb-5 border-b border-[#EAE5DD]">
+          <h3 className="text-xs font-bold tracking-wider uppercase text-[#1A1A1A]">
+            Kích Thước Vỏ
+          </h3>
+          <div className="space-y-2.5">
+            {availableSizes.map((size) => {
+              const isChecked = filters.caseSizes.includes(size);
+              return (
+                <label
+                  key={size}
+                  className="flex items-center justify-between cursor-pointer group select-none text-xs hover:text-[#8C5824] transition-colors"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => handleSizeToggle(size)}
+                      className="w-3.5 h-3.5 rounded border-[#D5CEC2] text-[#8C5824] focus:ring-0 cursor-pointer accent-[#8C5824]"
+                    />
+                    <span
+                      className={
+                        isChecked ? "text-[#8C5824] font-semibold" : "text-[#1A1A1A]"
+                      }
+                    >
+                      {size}
+                    </span>
+                  </div>
+                </label>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </aside>
   );
 }

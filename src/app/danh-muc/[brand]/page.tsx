@@ -24,7 +24,7 @@ export default function BrandPage({ params }: BrandPageProps) {
   }
 
   if (brandSlug === "patek-philippe") {
-    redirect("/danh-muc/patek-philippe/nautilus");
+    redirect("/danh-muc/patek-philippe/aquanaut");
   }
 
   if (brandSlug === "cartier") {
@@ -35,6 +35,6 @@ export default function BrandPage({ params }: BrandPageProps) {
     redirect("/danh-muc/franck-muller/vanguard-lady");
   }
 
-  // Default to yacht-master for Rolex and other brands
-  redirect(`/danh-muc/${brandSlug}/yacht-master`);
+  // Default to lady-datejust for Rolex and other brands
+  redirect(`/danh-muc/${brandSlug}/lady-datejust`);
 }

@@ -20,7 +20,7 @@ const BRAND_VIDEOS: Record<string, string> = {
   "hublot": "/videos/hublot.mp4",
   "patek-philippe": "/videos/patek-philippe.mp4",
   "cartier": "/videos/cartier.mp4",
-  "franck-muller": "/videos/classic-watches.mp4",
+  "franck-muller": "/videos/franck-muller.mp4",
   "vacheron-constantin": "/videos/classic-watches.mp4",
 };
 
@@ -74,6 +74,12 @@ export default function BrandHero({
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-normal tracking-wide text-white uppercase leading-[1.15] drop-shadow-sm">
               {displayTitle}
             </h1>
+
+            {subtitle && (
+              <p className="font-serif text-lg sm:text-xl text-[#C9A270] italic font-normal drop-shadow-sm">
+                {subtitle}
+              </p>
+            )}
 
             {description && (
               <div className="border-l-2 border-white/70 pl-4 sm:pl-6">
